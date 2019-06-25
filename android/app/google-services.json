@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "775613765907",
+    "firebase_url": "https://euroapp-c977a.firebaseio.com",
+    "project_id": "euroapp-c977a",
+    "storage_bucket": "euroapp-c977a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775613765907:android:9b69c75296e3e0dd",
+        "android_client_info": {
+          "package_name": "com.euroland.euroapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775613765907-p0acaalv9r2bcs9sn553ib1hshohitb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLPT9D30XVd0_pupoykAr5BVYMcOw_m24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775613765907-p0acaalv9r2bcs9sn553ib1hshohitb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
