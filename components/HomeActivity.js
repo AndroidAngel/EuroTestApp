@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
-
+import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 import firebase from 'react-native-firebase';
 
 class HomeActivity extends React.Component {
   static navigationOptions = {
-    title: 'Home',
+    title: 'Euro App',
     headerStyle: {
-      backgroundColor: '#03A9F4',
+      backgroundColor: '#034615',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -21,9 +14,9 @@ class HomeActivity extends React.Component {
     },
   };
 
-  _onPressProfilesButton() {
-    firebase.analytics().logEvent('onPressGotoProfileButton', {target: 'GotoProfileButton'});
-    this.props.navigation.navigate('Profile');
+  _onPressSecondActivityBtn() {
+    firebase.analytics().logEvent('onPressGotoSecondActivityButton', {target: 'GotoSecondActivity'});
+    this.props.navigation.navigate('Company');
   }
 
   render() {
@@ -34,10 +27,12 @@ class HomeActivity extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Home Activity</Text>
+     <Text style={styles.titleText}>EURO APP</Text>
+        <Text style={styles.headerText}>Just another React Native App</Text>
         <Button
-          title="Go to Profile Activity"
-          onPress={this._onPressProfilesButton.bind(this)}
+          title="Get Started "
+          onPress={this._onPressSecondActivityBtn.bind(this)}
+          color="#034615"
         />
       </View>
     );
@@ -50,11 +45,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  headerText: {
-    fontSize: 20,
+  titleText: {
+    fontSize: 36,
     textAlign: 'center',
-    margin: 10,
+    margin: 5,
+    color: '#111111',
     fontWeight: 'bold'
   },
+  headerText: {
+    fontSize: 18,
+    fontWeight: 300,
+    textAlign: 'center',
+    color: '#111111',
+    marginLeft: 16,
+    marginRight: 16,
+    fontWeight: 'bold'
+  },
+  buttonStyle: {
+    marginLeft: 5,
+
+    marginRight: 5,
+    backgroundColor: '#034615',
+    color: '#111111',
+    marginTop: 83,
+    marginBottom: 10
+  }
 });
 export default HomeActivity;
