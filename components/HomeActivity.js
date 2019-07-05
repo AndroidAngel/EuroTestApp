@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Button } from 'react-native-paper';
 import firebase from 'react-native-firebase';
 
 class HomeActivity extends React.Component {
@@ -29,11 +30,12 @@ class HomeActivity extends React.Component {
       <View style={styles.container}>
      <Text style={styles.titleText}>EURO APP</Text>
         <Text style={styles.headerText}>Just another React Native App</Text>
-        <Button
-          title="Get Started "
-          onPress={this._onPressSecondActivityBtn.bind(this)}
-          color="#034615"
-        />
+        <Button mode="contained" 
+         onPress={this._onPressSecondActivityBtn.bind(this)}  style={styles.button}>
+              Get Started
+            </Button>
+
+    
       </View>
     );
   }
@@ -41,12 +43,23 @@ class HomeActivity extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16
+  },
+  button: {
+    margin: 5,
+    height: 50,
+    marginTop: 300,
+    color: '#034615'
+  
+  },
+
   titleText: {
     fontSize: 36,
+    paddingTop: 247,
     textAlign: 'center',
     margin: 5,
     color: '#111111',
@@ -60,15 +73,7 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     fontWeight: 'bold'
-  },
-  buttonStyle: {
-    marginLeft: 5,
-
-    marginRight: 5,
-    backgroundColor: '#034615',
-    color: '#111111',
-    marginTop: 83,
-    marginBottom: 10
   }
 });
 export default HomeActivity;
+

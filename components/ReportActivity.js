@@ -33,6 +33,8 @@ class ReportActivity extends React.Component {
         </Picker>
           <Text style={styles.textStyle}> {"Index = "+ this.state.choosenReport}
           </Text>
+
+          
       </View>
     );
   }

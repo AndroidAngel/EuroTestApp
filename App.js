@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 import HomeActivity from './components/HomeActivity';
@@ -8,7 +9,6 @@ import ReportAndDownloadActivity from './components/ReportAndDownloadActivity';
 import ReportAcivity from './components/ReportActivity';
 
 import firebase from 'react-native-firebase';
-
 
 const RootStack = createStackNavigator(
   {
