@@ -10,9 +10,9 @@ class SecondActivity extends React.Component {
   static navigationOptions = {
     title: "Company",
     headerStyle: {
-      backgroundColor: "#034615"
+      backgroundColor: "#fff"
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#111111',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
@@ -34,7 +34,7 @@ class SecondActivity extends React.Component {
    
     return (
       <ScrollView
-      style={[styles.container, { backgroundColor: "#C0C0C0"}]}
+      style={[styles.container, { backgroundColor: "#e6e3e3"}]}
       contentContainerStyle={styles.content} >
           <Card style={styles.imageStyle}>
           <Card.Cover source={require('/Users/angie/EuroTestApp/assets/carlsbergdraught.png')} />

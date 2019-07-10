@@ -1,44 +1,49 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Button, Picker } from "react-native";
+import { List, Divider, withTheme } from 'react-native-paper';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import firebase, { Firebase } from 'react-native-firebase';
 
-class ReportAndDownloadActivity extends React.Component {
+class ThirdActivity extends React.Component {
   static navigationOptions = {
     title: "Reports & Downloads",
     headerStyle: {
-      backgroundColor: "#034615"
+      backgroundColor: "#fff"
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#111111',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
-    choosenReport: 0
+    expanded: true
   };
 
   _onPressAnnualReport() {
     firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportButton' });
-    this.props.navigation.navigate('Report');
+    this.props.navigation.navigate('AnnualReport');
   }
   _onPressSustainabilityReport() {
     firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportButton' });
-    this.props.navigation.navigate('Report');
+    this.props.navigation.navigate('SustainabilityReport');
   }
 
   render() {
 
     firebase.analytics().setCurrentScreen('REPORTANDDONWLOADS');
-    firebase.analytics().logEvent('onReportAndDonwaloadActivityLoaded', { target: 'ReportAndDownloadActivity' });
+    firebase.analytics().logEvent('onThirdActivityLoaded', { target: 'ThirdActivity' });
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Reports and Downlads</Text>
-        <Button
-          title="Annual Report"
+         <Divider /> 
+        <List.Section >
+          <List.Accordion title="Categories">
+            <List.Item title="Annual Report"
           onPress={this._onPressAnnualReport.bind(this)}
-        />
-        <Button
-          title="Sustainabilty Report" 
-          onPress={this._onPressSustainabilityReport.bind(this)}
-        />
+          />
+
+            <List.Item title="Sustainabilty Report"
+             onPress={this._onPressSustainabilityReport.bind(this)} />
+          </List.Accordion>
+    </List.Section>
+    <Divider />
       </View>
     );
   }
@@ -46,9 +51,6 @@ class ReportAndDownloadActivity extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
   },
   headerText: {
     fontSize: 20,
@@ -68,6 +70,12 @@ const styles = StyleSheet.create({
     color: '#344953',
     justifyContent: 'center',
 
-  }
+  },
+  imageStyle: {
+    margin: 4
+  }, 
 });
-export default ReportAndDownloadActivity;
+
+
+
+export default withTheme(ThirdActivity);

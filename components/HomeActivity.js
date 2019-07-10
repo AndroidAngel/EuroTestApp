@@ -7,9 +7,9 @@ class HomeActivity extends React.Component {
   static navigationOptions = {
     title: 'Euro App',
     headerStyle: {
-      backgroundColor: '#034615',
+      backgroundColor: "#fff"
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#111111',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
