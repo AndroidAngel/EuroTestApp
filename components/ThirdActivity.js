@@ -32,18 +32,18 @@ class ThirdActivity extends React.Component {
     firebase.analytics().logEvent('onThirdActivityLoaded', { target: 'ThirdActivity' });
     return (
       <View style={styles.container}>
-         <Divider /> 
+        <Divider />
         <List.Section >
           <List.Accordion title="Categories">
             <List.Item title="Annual Report"
-          onPress={this._onPressAnnualReport.bind(this)}
-          />
+              onPress={this._onPressAnnualReport.bind(this)}
+            />
 
             <List.Item title="Sustainabilty Report"
-             onPress={this._onPressSustainabilityReport.bind(this)} />
+              onPress={this._onPressSustainabilityReport.bind(this)} />
           </List.Accordion>
-    </List.Section>
-    <Divider />
+        </List.Section>
+        <Divider />
       </View>
     );
   }
@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "bold"
   },
-  textStyle:{
+  textStyle: {
     margin: 24,
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  pickerStyle:{
-    height:150,
+  pickerStyle: {
+    height: 150,
     width: "80%",
     color: '#344953',
     justifyContent: 'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     margin: 4
-  }, 
+  },
 });
 
 

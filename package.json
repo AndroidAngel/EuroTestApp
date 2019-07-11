@@ -14,14 +14,17 @@
   "dependencies": {
     "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
     "link": "^0.1.5",
+    "material-ui": "^0.20.2",
     "prop-types": "^15.7.2",
     "prop-types-extra": "^1.1.0",
-    "react": "16.8.3",
+    "react": "16.8.0",
     "react-native": "^0.59.3",
+    "react-native-dialogbox": "^0.6.10",
     "react-native-firebase": "^5.2.3",
     "react-native-gesture-handler": "^1.3.0",
     "react-native-material-ui": "^1.30.1",
     "react-native-paper": "^2.16.0",
+    "react-native-popup-dialog": "^0.18.2",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.0"
   },
