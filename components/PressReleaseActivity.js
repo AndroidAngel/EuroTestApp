@@ -22,7 +22,9 @@ class PressReleaseActivity extends React.Component {
   }
   _onPressNextButton() {
     firebase.analytics().logEvent('onPressNextButton', { target: 'GotoNextButton' });
+    firebase.analytics().logEvent('step_press_release');
     this.props.navigation.navigate("DownloadReports");
+
   }
 
   render() {

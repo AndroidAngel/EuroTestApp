@@ -15,7 +15,8 @@ class HomePageActivity extends React.Component {
     },
   };
   _onPressPressReleaseBtn() {
-    firebase.analytics().logEvent('onPressGotoPressReleaseBtnn', { target: 'GotoPressRelease' });
+    firebase.analytics().logEvent('onPressGotoPressReleaseBtnn', { target: 'GotoPressRelease', button_title: 'get started', target_screen: 'press release page'});
+    firebase.analytics().logEvent('step_home');
     this.props.navigation.navigate('PressRelease');
   }
   render() {

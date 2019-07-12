@@ -22,6 +22,7 @@ class AnnualReportActivity extends React.Component {
   }
   _onPressNoThanksBtn() {
     firebase.analytics().logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
+    firebase.analytics().logEvent('step_skip_subscription')
     this.props.navigation.navigate("HomePage");
     this.setState({ defaultAnimationDialog: false });
   }

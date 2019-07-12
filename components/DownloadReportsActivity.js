@@ -18,11 +18,11 @@ class DownloadReportsActivity extends React.Component {
   };
 
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReportActivity', { target: 'GotoAnnualReportBtn' });
+    firebase.analytics().logEvent('category', { selected: 'annual report'});
     this.props.navigation.navigate('AnnualReport');
   }
   _onPressSustainabilityReport() {
-    firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
+    firebase.analytics().logEvent('category', { selected: 'sustainability report'});
     this.props.navigation.navigate('SustainabilityReport');
   }
 
@@ -36,6 +36,7 @@ class DownloadReportsActivity extends React.Component {
           <List.Accordion title="Categories">
             <List.Item title="Annual Report"
               onPress={this._onPressAnnualReport.bind(this)}
+
             />
 
             <List.Item title="Sustainabilty Report"
