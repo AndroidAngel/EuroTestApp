@@ -1,71 +1,65 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import { List, Divider, withTheme, Card, Button } from 'react-native-paper';
+import { List, Divider, Card, Button, withTheme } from 'react-native-paper';
 import firebase, { Firebase } from 'react-native-firebase';
 
-import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton, SlideAnimation, ScaleAnimation } from 'react-native-popup-dialog';
+import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 
-class AnnualActivity extends React.Component {
+class SustainabilityReportActivity extends React.Component {
   state = {
     defaultAnimationDialog: false,
     scaleAnimationDialog: false,
     slideAnimationDialog: false,
     closingDialogAnimation: false,
   };
-  //  _showDialog = () => this.setState({ closingDialogAnimation: true })
-  //  _hideDialog = () => this.setState({ closingDialogAnimation: false })
-
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportButton' });
+    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.props.navigation.navigate('AnnualReport');
-  }
-  _onPressSustainabilityReport() {
-    firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportButton' });
-    this.props.navigation.navigate('SustainabilityReport');
   }
   _onpressNoThanksBtn() {
     firebase.analytics().logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    this.props.navigation.navigate("Home");
+    this.props.navigation.push("HomePage");
     this.setState({ defaultAnimationDialog: false });
   }
+
   _onPressSubscribeBtnClose() {
     firebase.analytics().logEvent('onPressSubscribeBtn', { target: 'GotoSubscibeBtn' })
-    this.props.navigation.navigate("Home");
+    this.props.navigation.navigate("HomePage");
   }
   _onPressYestoSubscribe() {
     this.setState({ closingDialogAnimation: true });
-    this.setState({ closingDialogAnimation: false });
-  }
- 
-  render() {
+    firebase.analytics().logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' })
 
-    firebase.analytics().setCurrentScreen('ANNUALREPORT');
-    firebase.analytics().logEvent('onAnnualdActivityLoaded', { target: 'AnnualActivity' });
+  }
+  render() {
+    firebase.analytics().setCurrentScreen('SustainabilityReport');
+    firebase.analytics().logEvent('onSustainabiltyActivityLoaded', { target: 'SustainabilityReportActivity' });
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Divider />
           <List.Section >
-            <List.Accordion title="Annual Report">
-              <List.Item title="Sustainabilty Report"
-                onPress={this._onPressSustainabilityReport.bind(this)} />
+            <List.Accordion title="Sustainabilty Report">
+              <List.Item title="Annual Report"
+                onPress={this._onPressAnnualReport.bind(this)} />
             </List.Accordion>
           </List.Section>
           <Divider />
           <Card style={styles.imageStyle}>
-            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/annualImg.png')} />
+            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/sustainabiltyImg.png')} />
             <Card.Content>
-              <Text style={styles.titleText}>Carlsberg Group Annual Report 2018</Text>
-              <Text style={styles.headerText}>06/02/2019</Text>
-              <Button mode="contained"
-                color="blue"
-                title="Download report"
+              <Text style={styles.titleText}>Economic Contribution to Society 2016</Text>
+              <Text style={styles.headerText}>29/03/2017</Text> 
+              <Button
+                mode="contained"
+                title="Download report" color="red"
                 onPress={() => {
                   this.setState({
                     defaultAnimationDialog: true,
                   });
                 }} style={styles.button}>
               </Button>
+    
             </Card.Content>
           </Card>
         </View>
@@ -103,7 +97,6 @@ class AnnualActivity extends React.Component {
           } >
         </Dialog>
 
-
         <Dialog
           onDismiss={() => {
             this.setState({ closingDialogAnimation: false });
@@ -140,6 +133,7 @@ class AnnualActivity extends React.Component {
             <Text>You’re now subscribed to notifications. You can unsubscribe at any time.</Text>
           </DialogContent>
         </Dialog>
+
       </View>
     );
   }
@@ -164,7 +158,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   textStyle: {
-    margin: 4,
+    margin: 24,
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -176,7 +170,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imageStyle: {
-    margin: 5
+    margin: 4
   },
   dialogContentView: {
     paddingLeft: 18,
@@ -205,9 +199,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   }
 });
-
-
-
-export default withTheme(AnnualActivity);
-
-
+export default withTheme(SustainabilityReportActivity);

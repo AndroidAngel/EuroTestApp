@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { ScrollView, Platform, StyleSheet, Text, View } from "react-native";
-
 import { Title, Caption, Paragraph, Button, Card, withTheme, Image } from 'react-native-paper';
 import firebase from 'react-native-firebase';
 
-
-
-class SecondActivity extends React.Component {
+class PressReleaseActivity extends React.Component {
   static navigationOptions = {
-    title: "Company",
+    title: "Press Release",
     headerStyle: {
       backgroundColor: "#fff"
     },
@@ -21,16 +18,16 @@ class SecondActivity extends React.Component {
 
   _onPressCancelButton() {
     firebase.analytics().logEvent('onPressGotoCancelButton', { target: 'GotoCancelButton' });
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('HomePage');
   }
   _onPressNextButton() {
     firebase.analytics().logEvent('onPressNextButton', { target: 'GotoNextButton' });
-    this.props.navigation.push("ReportAndDownloads");
+    this.props.navigation.navigate("DownloadReports");
   }
 
   render() {
-    firebase.analytics().setCurrentScreen('COMPANY');
-    firebase.analytics().logEvent('onSecondActivityLoaded', { target: 'SecondActivity' });
+    firebase.analytics().setCurrentScreen('PressRelease');
+    firebase.analytics().logEvent('onPressReleaseActivityLoaded', { target: 'PressReleaseActivity' });
 
     return (
       <ScrollView
@@ -123,4 +120,4 @@ const styles = StyleSheet.create({
     color: '#034615'
   }
 });
-export default withTheme(SecondActivity);
+export default withTheme(PressReleaseActivity);

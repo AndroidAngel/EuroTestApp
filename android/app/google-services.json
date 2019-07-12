@@ -30,6 +30,13 @@
             {
               "client_id": "775613765907-p0acaalv9r2bcs9sn553ib1hshohitb1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "775613765907-iimf0gll53bgp10o20cvr774e11cp41g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.euroland.euroapp"
+              }
             }
           ]
         }

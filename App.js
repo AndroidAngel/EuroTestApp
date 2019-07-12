@@ -1,28 +1,23 @@
 import React, {Component} from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-
-import HomeActivity from './components/HomeActivity';
-import SecondActivity from './components/SecondActivity';
-import ThirdActivity from './components/ThirdActivity';
-import AnnualActivity from './components/AnnualActivity';
-import SustainabilityActivity from './components/SustainabilityActivity';
-
-
-
+import HomePageActivity from './components/HomePageActivity';
+import PressReleaseActivity from './components/PressReleaseActivity';
+import DownloadReportsActivity from './components/DownloadReportsActivity';
+import AnnualReportActivity from './components/AnnualReportActivity';
+import SustainabilityReportActivity from './components/SustainabilityReportActivity';
 
 import firebase from 'react-native-firebase';
 
 const RootStack = createStackNavigator(
   {
-    Home: {screen: HomeActivity},
-    Company: {screen: SecondActivity},
-    ReportAndDownloads: {screen: ThirdActivity},
-    AnnualReport: {screen: AnnualActivity},
-    SustainabilityReport: {screen: SustainabilityActivity},
-
+    HomePage: {screen: HomePageActivity},
+    PressRelease: {screen: PressReleaseActivity},
+    DownloadReports: {screen: DownloadReportsActivity},
+    AnnualReport: {screen: AnnualReportActivity},
+    SustainabilityReport: {screen: SustainabilityReportActivity}
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'HomePage',
   }
 );
 

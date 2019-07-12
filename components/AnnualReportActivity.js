@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import { List, Divider, Card, Button, withTheme } from 'react-native-paper';
+import { List, Divider, withTheme, Card, Button } from 'react-native-paper';
 import firebase, { Firebase } from 'react-native-firebase';
 
-import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
+import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton, SlideAnimation, ScaleAnimation } from 'react-native-popup-dialog';
 
-class SustainabilityActivity extends React.Component {
+class AnnualReportActivity extends React.Component {
   state = {
     defaultAnimationDialog: false,
     scaleAnimationDialog: false,
@@ -13,68 +13,55 @@ class SustainabilityActivity extends React.Component {
     closingDialogAnimation: false,
   };
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportButton' });
+    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.props.navigation.navigate('AnnualReport');
   }
-  _onpressNoThanksBtn() {
+  _onPressSustainabilityReport() {
+    firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
+    this.props.navigation.navigate('SustainabilityReport');
+  }
+  _onPressNoThanksBtn() {
     firebase.analytics().logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    this.props.navigation.push("Home");
+    this.props.navigation.navigate("HomePage");
     this.setState({ defaultAnimationDialog: false });
   }
-
   _onPressSubscribeBtnClose() {
-    firebase.analytics().logEvent('onPressSubscribeBtn', { target: 'GotoSubscibeBtn' })
-    this.props.navigation.navigate("Home");
+    firebase.analytics().logEvent('onPressAlreadySubscribe', { target: 'GotoSubscibeBtn' })
+    this.props.navigation.navigate("HomePage");
   }
   _onPressYestoSubscribe() {
     this.setState({ closingDialogAnimation: true });
-    this.setState({ closingDialogAnimation: false });
+    firebase.analytics().logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' })
   }
-  _btnDownloadReport(){
-    this.setState({ defaultAnimationDialog: true});
-  
-
-  }
+ 
   render() {
-
-    firebase.analytics().setCurrentScreen('SUSTAINABILTYREPORT');
-    firebase.analytics().logEvent('onSustainabiltyActivityLoaded', { target: 'SustainabilityActivity' });
+    firebase.analytics().setCurrentScreen('AnnualReport');
+    firebase.analytics().logEvent('onAnnualdReportActivityLoaded', { target: 'AnnualReportActivity' });
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Divider />
           <List.Section >
-            <List.Accordion title="Sustainabilty Report">
-              <List.Item title="Annual Report"
-                onPress={this._onPressAnnualReport.bind(this)} />
+            <List.Accordion title="Annual Report">
+              <List.Item title="Sustainabilty Report"
+                onPress={this._onPressSustainabilityReport.bind(this)} />
             </List.Accordion>
           </List.Section>
           <Divider />
           <Card style={styles.imageStyle}>
-            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/sustainabiltyImg.png')} />
+            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/annualImg.png')} />
             <Card.Content>
-              <Text style={styles.titleText}>Economic Contribution to Society 2016</Text>
-              <Text style={styles.headerText}>29/03/2017</Text>
-             
-             
-{/*              
-             
-              <Button color="green"
-          onPress={this._onPressCancelButton.bind(this)} style={styles.button}>
-          Cancel
-        </Button>
-              */}
-             
-              <Button
-                mode="contained"
-                title="Download report" color="red"
+              <Text style={styles.titleText}>Carlsberg Group Annual Report 2018</Text>
+              <Text style={styles.headerText}>06/02/2019</Text>
+              <Button mode="contained"
+                color="blue"
+                title="Download report"
                 onPress={() => {
                   this.setState({
                     defaultAnimationDialog: true,
                   });
                 }} style={styles.button}>
               </Button>
-    
             </Card.Content>
           </Card>
         </View>
@@ -95,9 +82,6 @@ class SustainabilityActivity extends React.Component {
               hasTitleBar={false}
               align="left" />
           }
-
-      
-
           footer={
             <DialogFooter>
               <DialogButton
@@ -105,19 +89,16 @@ class SustainabilityActivity extends React.Component {
                 color="green"
                 bordered
                 onPress={this._onPressYestoSubscribe.bind(this)}
-                // onPress={() => {
-                //   this.setState({ defaultAnimationDialog: false });
-                // }}
-                key="button-1" />
+                key="buttonYes" />
               <DialogButton
                 text="No thanks"
                 bordered
-                onPress={this._onpressNoThanksBtn.bind(this)}
-        
-                key="button-2" />
+                onPress={this._onPressNoThanksBtn.bind(this)}
+                key="buttoNoThanks" />
             </DialogFooter>
           } >
         </Dialog>
+
 
         <Dialog
           onDismiss={() => {
@@ -155,7 +136,6 @@ class SustainabilityActivity extends React.Component {
             <Text>You’re now subscribed to notifications. You can unsubscribe at any time.</Text>
           </DialogContent>
         </Dialog>
-
       </View>
     );
   }
@@ -180,7 +160,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   textStyle: {
-    margin: 24,
+    margin: 4,
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -192,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imageStyle: {
-    margin: 4
+    margin: 5
   },
   dialogContentView: {
     paddingLeft: 18,
@@ -221,4 +201,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   }
 });
-export default withTheme(SustainabilityActivity);
+
+
+
+export default withTheme(AnnualReportActivity);
+
+

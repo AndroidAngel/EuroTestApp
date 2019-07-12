@@ -4,7 +4,7 @@ import { List, Divider, withTheme } from 'react-native-paper';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import firebase, { Firebase } from 'react-native-firebase';
 
-class ThirdActivity extends React.Component {
+class DownloadReportsActivity extends React.Component {
   static navigationOptions = {
     title: "Reports & Downloads",
     headerStyle: {
@@ -18,18 +18,17 @@ class ThirdActivity extends React.Component {
   };
 
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportButton' });
+    firebase.analytics().logEvent('onPressGotoAnnualReportActivity', { target: 'GotoAnnualReportBtn' });
     this.props.navigation.navigate('AnnualReport');
   }
   _onPressSustainabilityReport() {
-    firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportButton' });
+    firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
     this.props.navigation.navigate('SustainabilityReport');
   }
 
   render() {
-
-    firebase.analytics().setCurrentScreen('REPORTANDDONWLOADS');
-    firebase.analytics().logEvent('onThirdActivityLoaded', { target: 'ThirdActivity' });
+    firebase.analytics().setCurrentScreen('DownloadReports');
+    firebase.analytics().logEvent('onDownloadReportsActivityLoaded', { target: 'DownloadReportsActivity' });
     return (
       <View style={styles.container}>
         <Divider />
@@ -78,4 +77,4 @@ const styles = StyleSheet.create({
 
 
 
-export default withTheme(ThirdActivity);
+export default withTheme(DownloadReportsActivity);
