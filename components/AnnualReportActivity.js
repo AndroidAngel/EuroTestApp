@@ -1,20 +1,31 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import { List, Divider, withTheme, Card, Button } from 'react-native-paper';
-import firebase, { Firebase } from 'react-native-firebase';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import firebase from 'react-native-firebase';
+import { Button, Card, Divider, List, withTheme } from 'react-native-paper';
+import Dialog, { DialogButton, DialogContent, DialogFooter, DialogTitle } from 'react-native-popup-dialog';
 
-import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton, SlideAnimation, ScaleAnimation } from 'react-native-popup-dialog';
+import BaseEuroAppActivity from './BaseEuroAppActivity';
 
-class AnnualReportActivity extends React.Component {
+
+class AnnualReportActivity extends BaseEuroAppActivity {
   state = {
     defaultAnimationDialog: false,
     scaleAnimationDialog: false,
     slideAnimationDialog: false,
     closingDialogAnimation: false,
+    activityName: "AnnualReportActivity", 
+    activityData: {}
   };
+  
+  constructor(props){
+    super(props);
+}
+
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
-    this.props.navigation.navigate('AnnualReport');
+    this.logEvent('onPressGotoAnnualReport',{target:'GotoAnnualReportBtn'});
+    this.navigate('AnnualReport');
+
+    this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}});
   }
   _onPressSustainabilityReport() {
     firebase.analytics().logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
@@ -22,7 +33,8 @@ class AnnualReportActivity extends React.Component {
   }
   _onPressNoThanksBtn() {
     firebase.analytics().logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    firebase.analytics().logEvent('step_skip_subscription')
+    // firebase.analytics().logEvent('step_skip_subscription');
+    this.logEvent('step_skip_subscription', null);
     this.props.navigation.navigate("HomePage");
     this.setState({ defaultAnimationDialog: false });
   }
