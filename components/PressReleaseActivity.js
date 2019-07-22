@@ -1,36 +1,30 @@
 import React, { Component } from "react";
 import { ScrollView, Platform, StyleSheet, Text, View } from "react-native";
-import { Title, Caption, Paragraph, Button, Card, withTheme, Image } from 'react-native-paper';
+import { Paragraph, Button, Card, withTheme } from 'react-native-paper';
 import firebase from 'react-native-firebase';
+import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
 
-class PressReleaseActivity extends React.Component {
-  static navigationOptions = {
-    title: "Press Release",
-    headerStyle: {
-      backgroundColor: "#fff"
-    },
-    headerTintColor: '#111111',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+class PressReleaseActivity extends BaseEurolandAppActivity  {
 
+  constructor(props) {
+    super(props);
+     this.state = {
+    activityName: 'PressReleaseActivity',
+    activityData: {}
   };
-
+  }
   _onPressCancelButton() {
-    firebase.analytics().logEvent('onPressGotoCancelButton', { target: 'GotoCancelButton' });
-    this.props.navigation.navigate('HomePage');
+    this.logEvent('onPressGotoCancelButton', { target: 'GotoCancelButton' });
+    this.navigate('HomePage');
   }
   _onPressNextButton() {
-    firebase.analytics().logEvent('onPressNextButton', { target: 'GotoNextButton' });
-    firebase.analytics().logEvent('step_press_release');
-    this.props.navigation.navigate("DownloadReports");
-
+    this.logEvent('onPressNextButton', { target: 'GotoNextButton' });
+    // this.logEvent('step_press_release', null);
+    this.navigate('DownloadReports');
   }
-
   render() {
-    firebase.analytics().setCurrentScreen('PressRelease');
-    firebase.analytics().logEvent('onPressReleaseActivityLoaded', { target: 'PressReleaseActivity' });
-
+    this.logEvent().setCurrentScreen('PressRelease');
+    this.logEvent('onPressReleaseActivityLoaded', { target: 'PressReleaseActivity' });
     return (
       <ScrollView
         style={[styles.container, { backgroundColor: "#e6e3e3" }]}

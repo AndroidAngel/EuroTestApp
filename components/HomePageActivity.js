@@ -3,27 +3,25 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import firebase from 'react-native-firebase';
 
-class HomePageActivity extends React.Component {
-  static navigationOptions = {
-    title: 'Euro App',
-    headerStyle: {
-      backgroundColor: "#fff"
-    },
-    headerTintColor: '#111111',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
+
+class HomePageActivity extends BaseEurolandAppActivity {
+  constructor(props) {
+    super(props);
+    this.state = {
+    activityName: 'HomePageActivity',
+    activityData: {}
   };
+  }
   _onPressPressReleaseBtn() {
-    firebase.analytics().logEvent('onPressGotoPressReleaseBtnn', { target: 'GotoPressRelease', button_title: 'get started', target_screen: 'press release page'});
-    firebase.analytics().logEvent('step_home');
-    this.props.navigation.navigate('PressRelease');
+    this.logEvent('onPressGotoPressReleaseBtn', { target: 'GotoPressRelease' });
+    // this.logEvent('step_home', null );
+    this.navigate('PressRelease');
+   this.setState({'activity_log': {button_title: 'get started', target_screen: 'press release page'}});
   }
   render() {
-
-    firebase.analytics().setCurrentScreen('HomePage');
-    firebase.analytics().logEvent('onHomePageActivityLoaded', { target: 'HomePageActivity' });
-
+    // this.logEvent().setCurrentScreen('HomePage');
+    this.logEvent('onHomePageActivityLoaded', {target: 'HomePageActivity' });
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>EURO APP</Text>

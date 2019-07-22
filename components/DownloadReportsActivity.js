@@ -1,44 +1,36 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Button, Picker } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import { List, Divider, withTheme } from 'react-native-paper';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
 import firebase, { Firebase } from 'react-native-firebase';
+import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
 
-class DownloadReportsActivity extends React.Component {
-  static navigationOptions = {
-    title: "Reports & Downloads",
-    headerStyle: {
-      backgroundColor: "#fff"
-    },
-    headerTintColor: '#111111',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    expanded: true
+class DownloadReportsActivity extends BaseEurolandAppActivity  {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+    activityName: 'DownloadReportsActivity',
+    activityData: {}
   };
-
+  }
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('category', { selected: 'annual report'});
-    this.props.navigation.navigate('AnnualReport');
+    this.logEvent('category', { selected: 'annual report' })
+    this.navigate('AnnualReport')
   }
   _onPressSustainabilityReport() {
-    firebase.analytics().logEvent('category', { selected: 'sustainability report'});
-    this.props.navigation.navigate('SustainabilityReport');
+    this.logEvent('category', { selected: 'sustainability report' })
+    this.navigate('SustainabilityReport')
   }
-
   render() {
-    firebase.analytics().setCurrentScreen('DownloadReports');
-    firebase.analytics().logEvent('onDownloadReportsActivityLoaded', { target: 'DownloadReportsActivity' });
+    this.logEvent().setCurrentScreen('DownloadReports');
+    this.logEvent('onDownloadReportsActivityOnLoad', { target: 'DownloadReportsActivity' });
     return (
       <View style={styles.container}>
         <Divider />
         <List.Section >
           <List.Accordion title="Categories">
             <List.Item title="Annual Report"
-              onPress={this._onPressAnnualReport.bind(this)}
-
-            />
-
+              onPress={this._onPressAnnualReport.bind(this)} />
             <List.Item title="Sustainabilty Report"
               onPress={this._onPressSustainabilityReport.bind(this)} />
           </List.Accordion>
@@ -75,7 +67,4 @@ const styles = StyleSheet.create({
     margin: 4
   },
 });
-
-
-
 export default withTheme(DownloadReportsActivity);

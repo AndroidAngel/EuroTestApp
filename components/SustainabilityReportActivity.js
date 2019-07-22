@@ -2,38 +2,42 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { List, Divider, Card, Button, withTheme } from 'react-native-paper';
 import firebase, { Firebase } from 'react-native-firebase';
+import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
 
 import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 
-class SustainabilityReportActivity extends React.Component {
-  state = {
+class SustainabilityReportActivity extends BaseEurolandAppActivity  {
+
+  constructor(props) {
+    super(props);
+      this.state = {
     defaultAnimationDialog: false,
-    scaleAnimationDialog: false,
-    slideAnimationDialog: false,
     closingDialogAnimation: false,
+    activityName: 'SustainabilityReportActivity',
+    activityData: {}
   };
+  }
   _onPressAnnualReport() {
-    firebase.analytics().logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
-    this.props.navigation.navigate('AnnualReport');
+    this.logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
+    this.navigate('AnnualReport');
   }
   _onpressNoThanksBtn() {
-    firebase.analytics().logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    this.props.navigation.push("HomePage");
+    this.logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
+    this.navigate('HomePage');
     this.setState({ defaultAnimationDialog: false });
   }
-
   _onPressSubscribeBtnClose() {
-    firebase.analytics().logEvent('onPressSubscribeBtn', { target: 'GotoSubscibeBtn' })
-    this.props.navigation.navigate("HomePage");
+    this.logEvent('onPressSubscribeButtonClose', { target: 'GotoSubscibeButton' });
+    this.navigate('HomePage');
   }
   _onPressYestoSubscribe() {
+    this.logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' });
     this.setState({ closingDialogAnimation: true });
-    firebase.analytics().logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' })
 
   }
   render() {
-    firebase.analytics().setCurrentScreen('SustainabilityReport');
-    firebase.analytics().logEvent('onSustainabiltyActivityLoaded', { target: 'SustainabilityReportActivity' });
+    this.logEvent().setCurrentScreen('SustainabilityReport');
+    this.logEvent('onSustainabiltyActivityLoaded', { target: 'SustainabilityReportActivity' });
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>

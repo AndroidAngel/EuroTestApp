@@ -5,7 +5,7 @@ import PressReleaseActivity from './components/PressReleaseActivity';
 import DownloadReportsActivity from './components/DownloadReportsActivity';
 import AnnualReportActivity from './components/AnnualReportActivity';
 import SustainabilityReportActivity from './components/SustainabilityReportActivity';
-import BaseEuroAppActivity from './components/BaseEuroAppActivity';
+import BaseEurolandAppActivity  from './components/BaseEurolandAppActivity.js';
 
 import firebase from 'react-native-firebase';
 
