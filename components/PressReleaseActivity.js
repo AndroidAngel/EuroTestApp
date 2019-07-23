@@ -29,13 +29,13 @@ class PressReleaseActivity extends BaseEurolandAppActivity  {
         style={[styles.container, { backgroundColor: "#e6e3e3" }]}
         contentContainerStyle={styles.content} >
         <Card style={styles.imageStyle}>
-          <Card.Cover source={require('/Users/angie/EuroTestApp/assets/carlsbergdraught.png')} />
+          <Card.Cover source={require('../assets/carlsbergdraught.png')} />
           <Card.Content>
             <Text style={styles.titleText}>Carlsberg delivers strong results;</Text>
             <Text style={styles.headerText}>Financial Statement as at 31 December 2018.</Text>
 
             <Text style={styles.subHeader}>HIGHLIGHTS</Text>
-            <Card.Cover source={{ require: '/Users/angie/EuroTestApp/assets/Oval.png' }} style={{ width: 10, height: 10 }} />
+            <Card.Cover source={{ require: '../assets/Oval.png' }} style={{ width: 10, height: 10 }} />
             <Text style={styles.subText}>Organic net revenue growth of 6.5%;</Text>
             <Text style={styles.subText}>Reported net revenue growth of 3.0% to DKK 62,503m.</Text>
             <Text style={styles.subText}>Price/mix improvement of 2%.</Text>

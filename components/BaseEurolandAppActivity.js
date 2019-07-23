@@ -27,7 +27,7 @@ class BaseEurolandAppActivity extends React.Component {
     async componentWillMount(){
         await this.trace.stop();
     }
-   
+
     initializeCrashlytics(activityName, activityData) {
         firebase.crashlytics().log('crash messsage test');
 

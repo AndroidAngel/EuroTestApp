@@ -50,10 +50,10 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
           </List.Section>
           <Divider />
           <Card style={styles.imageStyle}>
-            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/sustainabiltyImg.png')} />
+            <Card.Cover source={require('../assets/sustainabiltyImg.png')} />
             <Card.Content>
               <Text style={styles.titleText}>Economic Contribution to Society 2016</Text>
-              <Text style={styles.headerText}>29/03/2017</Text> 
+              <Text style={styles.headerText}>29/03/2017</Text>
               <Button
                 mode="contained"
                 title="Download report" color="red"
@@ -63,7 +63,7 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
                   });
                 }} style={styles.button}>
               </Button>
-    
+
             </Card.Content>
           </Card>
         </View>

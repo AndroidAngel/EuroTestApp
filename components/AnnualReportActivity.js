@@ -6,7 +6,7 @@ import Dialog, { DialogButton, DialogContent, DialogFooter, DialogTitle } from '
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 class AnnualReportActivity extends BaseEurolandAppActivity {
- 
+
   constructor(props) {
     super(props);
      this.state = {
@@ -21,8 +21,8 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
     this.logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.navigate('AnnualReport');
     // this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}}); sample!!
-  
- 
+
+
   }
   _onPressSustainabilityReport() {
     this.logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
@@ -44,6 +44,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
   }
 
   render() {
+    firebase.crashlytics().crash();
     // this.logEvent().setCurrentScreen('AnnualReport', '');
     this.logEvent('onAnnualdReportActivityonLoad', { target: 'AnnualReportActivity' });
     // firebase.analytics().setCurrentScreen('AnnualReport');
@@ -59,7 +60,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
           </List.Section>
           <Divider />
           <Card style={styles.imageStyle}>
-            <Card.Cover source={require('/Users/angie/EuroTestApp/assets/annualImg.png')} />
+            <Card.Cover source={require('../assets/annualImg.png')} />
             <Card.Content>
               <Text style={styles.titleText}>Carlsberg Group Annual Report 2018</Text>
               <Text style={styles.headerText}>06/02/2019</Text>
@@ -111,7 +112,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
         <Dialog
           onDismiss={() => {
             this.setState({ closingDialogAnimation: false });
-            
+
           }}
           width={0.9}
           visible={this.state.closingDialogAnimation}
