@@ -32,11 +32,11 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
   }
   _onPressYestoSubscribe() {
     this.logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' });
-    this.setState({ closingDialogAnimation: true });
+    this.setState({ closingDialogAnimation: false });
 
   }
   render() {
-    this.logEvent().setCurrentScreen('SustainabilityReport');
+    // this.logEvent().setCurrentScreen('SustainabilityReport', '');
     this.logEvent('onSustainabiltyActivityLoaded', { target: 'SustainabilityReportActivity' });
     return (
       <View style={{ flex: 1 }}>

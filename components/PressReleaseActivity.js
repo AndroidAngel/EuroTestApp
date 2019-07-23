@@ -5,7 +5,6 @@ import firebase from 'react-native-firebase';
 import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
 
 class PressReleaseActivity extends BaseEurolandAppActivity  {
-
   constructor(props) {
     super(props);
      this.state = {
@@ -23,7 +22,7 @@ class PressReleaseActivity extends BaseEurolandAppActivity  {
     this.navigate('DownloadReports');
   }
   render() {
-    this.logEvent().setCurrentScreen('PressRelease');
+    // this.logEvent().setCurrentScreen('PressRelease');
     this.logEvent('onPressReleaseActivityLoaded', { target: 'PressReleaseActivity' });
     return (
       <ScrollView

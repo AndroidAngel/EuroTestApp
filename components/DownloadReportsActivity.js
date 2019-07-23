@@ -14,15 +14,15 @@ class DownloadReportsActivity extends BaseEurolandAppActivity  {
   };
   }
   _onPressAnnualReport() {
-    this.logEvent('category', { selected: 'annual report' })
+    this.logEvent('category', { target: 'annual report' })
     this.navigate('AnnualReport')
   }
   _onPressSustainabilityReport() {
-    this.logEvent('category', { selected: 'sustainability report' })
+    this.logEvent('category', { target: 'sustainability report' })
     this.navigate('SustainabilityReport')
   }
   render() {
-    this.logEvent().setCurrentScreen('DownloadReports');
+    // this.logEvent().setCurrentScreen('DownloadReports');
     this.logEvent('onDownloadReportsActivityOnLoad', { target: 'DownloadReportsActivity' });
     return (
       <View style={styles.container}>
@@ -30,7 +30,8 @@ class DownloadReportsActivity extends BaseEurolandAppActivity  {
         <List.Section >
           <List.Accordion title="Categories">
             <List.Item title="Annual Report"
-              onPress={this._onPressAnnualReport.bind(this)} />
+              onPress={this._onPressAnnualReport.bind(this)}
+           />
             <List.Item title="Sustainabilty Report"
               onPress={this._onPressSustainabilityReport.bind(this)} />
           </List.Accordion>

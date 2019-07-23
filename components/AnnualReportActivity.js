@@ -20,7 +20,9 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
   _onPressAnnualReport() {
     this.logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.navigate('AnnualReport');
-    // this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}}); SAMPLE!!
+    // this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}}); sample!!
+  
+ 
   }
   _onPressSustainabilityReport() {
     this.logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
@@ -37,12 +39,12 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
     this.navigate('HomePage');
   }
   _onPressYestoSubscribe() {
-    this.setState({ closingDialogAnimation: true });
+    this.setState({ closingDialogAnimation: false });
     this.logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' });
   }
 
   render() {
-    this.logEvent().setCurrentScreen('AnnualReport');
+    // this.logEvent().setCurrentScreen('AnnualReport', '');
     this.logEvent('onAnnualdReportActivityonLoad', { target: 'AnnualReportActivity' });
     // firebase.analytics().setCurrentScreen('AnnualReport');
     return (
@@ -109,6 +111,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
         <Dialog
           onDismiss={() => {
             this.setState({ closingDialogAnimation: false });
+            
           }}
           width={0.9}
           visible={this.state.closingDialogAnimation}
