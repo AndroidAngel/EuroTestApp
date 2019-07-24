@@ -16,33 +16,33 @@ class BaseEurolandAppActivity extends React.Component {
     async componentDidMount() {
         this.initializeCrashlytics(this.state.activityName, this.state.activityData);
         firebase.analytics().logEvent(`componentDidMount${this.state.activityName}`);
+       
         this.trace = firebase.perf().newTrace('cache_trace');
         await this.trace.start();
-
         await this.trace.putAttribute('user_id', firebase.auth().currentUser.uid);
         await this.trace.putAttribute('endpoint', this.endpoint);
         await this.trace.putMetric('request', 0);
 
     }
-    async componentWillMount(){
+    async componentWillMount() {
         await this.trace.stop();
     }
-
     initializeCrashlytics(activityName, activityData) {
-        firebase.crashlytics().log('crash messsage test');
-
-        // initialize crashlytics here
+        firebase.crashlytics().log('this is a crash messsage test');
+        firebase.crashlytics().enableCrashlyticsCollection();
+    // initialize crashlytics here
+    //enableCrashlyticsCollection() returns void;
+    // crash() returns void;
+    // log(message) returns void;
+    // recordError(code, message) returns void;
+    // setBoolValue(key, value) returns void;
+    // setFloatValue(key, value) returns void;
+    // setIntValue(key, value) returns void;
+    // setStringValue(key, value) returns void;
+    // setUserIdentifier(userId) returns void;
+        
 
     }
-
-    async forceCrash() {
-        firebase.crashlytics().crash();
-        await firebase.crashlytics().setAttributes({ something: "something" });
-        firebase.crashlytics().log("A woopsie is incoming :(");
-        firebase.crashlytics().recordError(new Error("Error Log"));
-
-    }
-
 
     logEvent(eventName, target) {
         firebase.analytics().logEvent(eventName, target);

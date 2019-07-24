@@ -44,7 +44,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
   }
 
   render() {
-    firebase.crashlytics().crash();
+
     // this.logEvent().setCurrentScreen('AnnualReport', '');
     this.logEvent('onAnnualdReportActivityonLoad', { target: 'AnnualReportActivity' });
     // firebase.analytics().setCurrentScreen('AnnualReport');
