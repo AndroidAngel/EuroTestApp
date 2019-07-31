@@ -9,7 +9,7 @@ class BaseEurolandAppActivity extends React.Component {
 
 
   state = {
-    activityName: 'test',
+    activityName: 'test', 
     activityData: {}
   };
 
@@ -132,8 +132,7 @@ class BaseEurolandAppActivity extends React.Component {
     // setFloatValue(key, value) returns void;
     // setIntValue(key, value) returns void;
     // setStringValue(key, value) returns void;
-    // setUserIdentifier(userId) returns void;
-
+    firebase.crashlytics().setUserIdentifier(userId);
 
   }
 

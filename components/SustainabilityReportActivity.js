@@ -2,37 +2,53 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { List, Divider, Card, Button, withTheme } from 'react-native-paper';
 import firebase, { Firebase } from 'react-native-firebase';
-import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
+import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 import Dialog, { DialogTitle, DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 
-class SustainabilityReportActivity extends BaseEurolandAppActivity  {
+class SustainabilityReportActivity extends BaseEurolandAppActivity {
 
   constructor(props) {
     super(props);
-      this.state = {
-    defaultAnimationDialog: false,
-    closingDialogAnimation: false,
-    activityName: 'SustainabilityReportActivity',
-    activityData: {}
-  };
+    this.state = {
+      defaultAnimationDialog: false,
+      closingDialogAnimation: false,
+      activityName: 'SustainabilityReportActivity',
+      activityData: {}
+    };
   }
+  //Go to Annual report
   _onPressAnnualReport() {
     this.logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.navigate('AnnualReport');
+    // this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}}); sample!!
   }
-  _onpressNoThanksBtn() {
-    this.logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    this.navigate('HomePage');
+  //Go to Sustainability report
+  _onPressSustainabilityReport() {
+    this.logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
+    this.navigate('SustainabilityReport');
+  }
+  //Not Notified when new things are shared
+  _onPressNotNotified() {
+    this.logEvent('onPressNotNotified', { target: 'not_notified' });
     this.setState({ defaultAnimationDialog: false });
-  }
-  _onPressSubscribeBtnClose() {
-    this.logEvent('onPressSubscribeButtonClose', { target: 'GotoSubscibeButton' });
     this.navigate('HomePage');
   }
-  _onPressYestoSubscribe() {
-    this.logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' });
-    this.setState({ closingDialogAnimation: false });
+  //Yes Notified when new things are shared
+  _onPressYesNotified() {
+    this.logEvent('onPressYesNotified', { target: 'yes_notified' });
+      this.setState({ closingDialogAnimation: true });
+    this.setState({ defaultAnimationDialog: false });
+  
+
+
+
+  }
+  //Already Notified 
+  _onPressCloseDialog(){
+    this.logEvent('onPressCloseDialog', { target: 'already_notified' });
+    this.setState({ closingDialogAnimation: false});
+    this.navigate('HomePage');
 
   }
   render() {
@@ -54,19 +70,18 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
             <Card.Content>
               <Text style={styles.titleText}>Economic Contribution to Society 2016</Text>
               <Text style={styles.headerText}>29/03/2017</Text>
-              <Button
-                mode="contained"
-                title="Download report" color="red"
+              <Button color="green"
                 onPress={() => {
                   this.setState({
                     defaultAnimationDialog: true,
                   });
                 }} style={styles.button}>
+                Download Report
               </Button>
-
             </Card.Content>
           </Card>
         </View>
+      {/* First Dialog */}
         <Dialog
           onDismiss={() => {
             this.setState({ defaultAnimationDialog: false });
@@ -90,17 +105,17 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
                 text="YES"
                 color="green"
                 bordered
-                onPress={this._onPressYestoSubscribe.bind(this)}
+                onPress={this._onPressYesNotified.bind(this)}
                 key="buttonYes" />
               <DialogButton
                 text="No thanks"
                 bordered
-                onPress={this._onpressNoThanksBtn.bind(this)}
+                onPress={this._onPressNotNotified.bind(this)}
                 key="buttoNoThanks" />
             </DialogFooter>
           } >
         </Dialog>
-
+              {/* Closing Dialog */}
         <Dialog
           onDismiss={() => {
             this.setState({ closingDialogAnimation: false });
@@ -125,7 +140,7 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
                 text="Close"
                 color="green"
                 bordered
-                onPress={this._onPressSubscribeBtnClose.bind(this)}
+                onPress={this._onPressCloseDialog.bind(this)}
                 key="button-3" />
             </DialogFooter>
           } >
@@ -135,7 +150,7 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity  {
             }}
           >
             <Text>You’re now subscribed to notifications. You can unsubscribe at any time.</Text>
-          </DialogContent>
+          </DialogContent> 
         </Dialog>
 
       </View>
