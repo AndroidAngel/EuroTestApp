@@ -71,7 +71,7 @@ _onPressCloseDialog(){
                   this.setState({
                     defaultAnimationDialog: true,
                   });
-                }} style={styles.button}>
+                }} style={styles.downloadBtn}>
                   Download Report
               </Button>
             </Card.Content>
@@ -169,6 +169,10 @@ const styles = StyleSheet.create({
     margin: 5,
     color: '#111111',
     fontWeight: 'bold'
+  },
+  downloadBtn:{
+    margin: 5,
+    fontSize: 14
   },
   textStyle: {
     margin: 4,

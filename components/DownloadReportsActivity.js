@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import { List, Divider, withTheme } from 'react-native-paper';
+import { List, Divider, withTheme , Button} from 'react-native-paper';
 import firebase, { Firebase } from 'react-native-firebase';
 import BaseEurolandAppActivity  from './BaseEurolandAppActivity.js';
 
@@ -14,12 +14,17 @@ class DownloadReportsActivity extends BaseEurolandAppActivity  {
   };
   }
   _onPressAnnualReport() {
-    this.logEvent('category', { target: 'annual report' })
-    this.navigate('AnnualReport')
+    this.logEvent('category', { target: 'annual report' });
+    this.navigate('AnnualReport');
   }
   _onPressSustainabilityReport() {
-    this.logEvent('category', { target: 'sustainability report' })
-    this.navigate('SustainabilityReport')
+    this.logEvent('category', { target: 'sustainability report' });
+    this.navigate('SustainabilityReport');
+  }
+  _onPressForceCrash(){
+    this.logEvent('forcecrashbutton', {target: 'force_crash_button'});
+    firebase.crashlytics().crash();
+  
   }
   render() {
     // this.logEvent().setCurrentScreen('DownloadReports');
@@ -37,6 +42,13 @@ class DownloadReportsActivity extends BaseEurolandAppActivity  {
           </List.Accordion>
         </List.Section>
         <Divider />
+
+        <Button mode="contained" color="red"
+          onPress={this. _onPressForceCrash.bind(this)} style={styles.button}>
+          Force Crash
+          
+            </Button>
+        
       </View>
     );
   }
@@ -44,6 +56,11 @@ class DownloadReportsActivity extends BaseEurolandAppActivity  {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  button: {
+    margin: 5,
+    height: 50,
+    marginTop: 150,
   },
   headerText: {
     fontSize: 20,

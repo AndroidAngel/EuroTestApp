@@ -75,7 +75,7 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity {
                   this.setState({
                     defaultAnimationDialog: true,
                   });
-                }} style={styles.button}>
+                }} style={styles.downloadBtn}>
                 Download Report
               </Button>
             </Card.Content>
@@ -164,6 +164,10 @@ const styles = StyleSheet.create({
   button: {
     margin: 5,
     height: 12
+  },
+  downloadBtn:{
+    margin: 5,
+    fontSize: 14
   },
   headerText: {
     fontSize: 16,

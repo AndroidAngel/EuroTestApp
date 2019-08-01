@@ -36,7 +36,7 @@ class PressReleaseActivity extends BaseEurolandAppActivity  {
 
             <Text style={styles.subHeader}>HIGHLIGHTS</Text>
             <Card.Cover source={{ require: '../assets/Oval.png' }} style={{ width: 10, height: 10 }} />
-       <Text style={styles.subText}>Organic net revenue growth of 6.5%;</Text>
+       <Text source={{ require: '../assets/circle-solid.svg'}} style={styles.subText}>Organic net revenue growth of 6.5%;</Text>
             <Text style={styles.subText}>Reported net revenue growth of 3.0% to DKK 62,503m.</Text>
             <Text style={styles.subText}>Price/mix improvement of 2%.</Text>
          <Text style={styles.subText}>Total organic volume growth of 4.8%; reported growth of 5.3%.</Text>
