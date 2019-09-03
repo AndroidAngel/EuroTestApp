@@ -14,12 +14,14 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
   };
   }
   signupEmail(){
-    this.logEvent('signup_email', {method_email: 'email_success'});
+    this.logEvent('signup_email', {method: 'email_success'});
+    // this.setUserProperty('result' , {result: 'success'});
+
     this.navigate('SignupInformation');
   }
   signupGoogle(){
-    this.logEvent('signup', {method: 'google'});
-    this.setUserProperty('result' , {result: 'success'});
+    this.logEvent('signup_google', {method: 'google'});
+    // this.setUserProperty('result' , {result: 'success'});
 
 
     this.navigate('SignupOpenAuthentication');
@@ -29,12 +31,14 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
 
   
   signupFacebook(){
-    this.logEvent('signup', {method_facebook: 'facebook'} );
+    this.logEvent('signup_facebook', {method: 'facebook'} );
+    // this.setUserProperty('result' , {result: 'success'});
+
     this.navigate('SignupOpenAuthentication');
   }
   signupLinkedin(){
     this.logEvent('signup_linkedin', {method: 'linkedin'});
-    this.setUserProperty('result' , {result: 'success'});
+    // this.setUserProperty('result' , {result: 'success'});
     this.navigate('SignupOpenAuthentication');
   }
 

@@ -16,39 +16,41 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
     activityData: {}
   };
   }
-
+//Go to Annual report
   _onPressAnnualReport() {
     this.logEvent('onPressGotoAnnualReport', { target: 'GotoAnnualReportBtn' });
     this.navigate('AnnualReport');
     // this.setState({activityData: {someProperty: "somevalue", somereoperty2: "somevalue2"}}); sample!!
-
-
   }
+  //Go to Sustainability report
   _onPressSustainabilityReport() {
     this.logEvent('onPressGotoSustainabiltyReport', { target: 'GotoSustainabiltyReportBtn' });
     this.navigate('SustainabilityReport');
   }
-  _onPressNoThanksBtn() {
-    this.logEvent('onPressNothanksBtn', { target: 'GoBacktoHomepage' });
-    // this.logEvent('step_skip_subscription', null);
-    this.navigate('HomePage');
+  //Not notified when new things are shared
+  _onPressNotNotified() {
+    this.logEvent('onPressNotNotified', { target: 'not_notified' });
     this.setState({ defaultAnimationDialog: false });
-  }
-  _onPressSubscribeBtnClose() {
-    this.logEvent('onPressAlreadySubscribe', { target: 'GotoSubscibeBtn' });
     this.navigate('HomePage');
   }
-  _onPressYestoSubscribe() {
-    this.setState({ closingDialogAnimation: false });
-    this.logEvent('onPressYesSubscribe', { target: 'GotoYesSubscribe' });
-  }
+ //Yes Notified when new things are shared
+ _onPressYesNotified() {
+  this.logEvent('onPressYesNotified', { target: 'yes_notified' });
+    this.setState({ closingDialogAnimation: true });
+  this.setState({ defaultAnimationDialog: false });
+}
+//Already Notified 
+_onPressCloseDialog(){
+  this.logEvent('onPressCloseDialog', { target: 'already_notified' });
+  this.setState({ closingDialogAnimation: false});
+  this.navigate('HomePage');
 
+}
   render() {
-
     // this.logEvent().setCurrentScreen('AnnualReport', '');
     this.logEvent('onAnnualdReportActivityonLoad', { target: 'AnnualReportActivity' });
     // firebase.analytics().setCurrentScreen('AnnualReport');
-    return (
+    return ( 
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Divider />
@@ -64,18 +66,18 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
             <Card.Content>
               <Text style={styles.titleText}>Carlsberg Group Annual Report 2018</Text>
               <Text style={styles.headerText}>06/02/2019</Text>
-              <Button mode="contained"
-                color="blue"
-                title="Download report"
+              <Button color="green"
                 onPress={() => {
                   this.setState({
                     defaultAnimationDialog: true,
                   });
-                }} style={styles.button}>
+                }} style={styles.downloadBtn}>
+                  Download Report
               </Button>
             </Card.Content>
           </Card>
         </View>
+        {/* First Dialog */}
         <Dialog
           onDismiss={() => {
             this.setState({ defaultAnimationDialog: false });
@@ -99,20 +101,19 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
                 text="YES"
                 color="green"
                 bordered
-                onPress={this._onPressYestoSubscribe.bind(this)}
+                onPress={this._onPressYesNotified.bind(this)}
                 key="buttonYes" />
               <DialogButton
                 text="No thanks"
                 bordered
-                onPress={this._onPressNoThanksBtn.bind(this)}
+                onPress={this._onPressNotNotified.bind(this)}
                 key="buttoNoThanks" />
-            </DialogFooter>
-          } >
+            </DialogFooter>} >
         </Dialog>
-        <Dialog
+          {/* Closing Dialog */}
+          <Dialog
           onDismiss={() => {
             this.setState({ closingDialogAnimation: false });
-
           }}
           width={0.9}
           visible={this.state.closingDialogAnimation}
@@ -134,7 +135,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
                 text="Close"
                 color="green"
                 bordered
-                onPress={this._onPressSubscribeBtnClose.bind(this)}
+                onPress={this._onPressCloseDialog.bind(this)}
                 key="button-3" />
             </DialogFooter>
           } >
@@ -144,7 +145,7 @@ class AnnualReportActivity extends BaseEurolandAppActivity {
             }}
           >
             <Text>You’re now subscribed to notifications. You can unsubscribe at any time.</Text>
-          </DialogContent>
+          </DialogContent> 
         </Dialog>
       </View>
     );
@@ -168,6 +169,10 @@ const styles = StyleSheet.create({
     margin: 5,
     color: '#111111',
     fontWeight: 'bold'
+  },
+  downloadBtn:{
+    margin: 5,
+    fontSize: 14
   },
   textStyle: {
     margin: 4,
@@ -211,5 +216,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   }
 });
-
 export default withTheme(AnnualReportActivity);

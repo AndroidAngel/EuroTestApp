@@ -36,18 +36,19 @@ class PressReleaseActivity extends BaseEurolandAppActivity  {
 
             <Text style={styles.subHeader}>HIGHLIGHTS</Text>
             <Card.Cover source={{ require: '../assets/Oval.png' }} style={{ width: 10, height: 10 }} />
-            <Text style={styles.subText}>Organic net revenue growth of 6.5%;</Text>
+       <Text source={{ require: '../assets/circle-solid.svg'}} style={styles.subText}>Organic net revenue growth of 6.5%;</Text>
             <Text style={styles.subText}>Reported net revenue growth of 3.0% to DKK 62,503m.</Text>
             <Text style={styles.subText}>Price/mix improvement of 2%.</Text>
-            <Text style={styles.subText}>Total organic volume growth of 4.8%; reported growth of 5.3%.</Text>
-            <Text style={styles.subText}>Tuborg volume growth of 10%, Carlsberg +5%,</Text>
-            <Text style={styles.subText}>Grimbergen +14% and 1664 Blanc +49%.</Text>
-            <Text style={styles.subText}>Craft and speciality volume growth of 26%; alcohol-free brew volumes in Western Europe +33%.</Text>
-            <Text style={styles.subText}>Funding the Journey as a specific programme successfully concluded with total benefits of around DKK 3bn.</Text>
-            <Text style={styles.subText}>Gross margin improvement of 20bp and operating margin improvement of 30bp to 14.9%.</Text>
+         <Text style={styles.subText}>Total organic volume growth of 4.8%; reported growth of 5.3%.</Text>
+           <Text style={styles.subText}>Tuborg volume growth of 10%, Carlsberg +5%,</Text>
+             <Text style={styles.subText}>Grimbergen +14% and 1664 Blanc +49%.</Text>
+         <Text style={styles.subText}>Craft and speciality volume growth of 26%; alcohol-free brew volumes in Western Europe +33%.</Text>
+           <Text style={styles.subText}>Funding the Journey as a specific programme successfully concluded with total benefits of around DKK 3bn.</Text>
+           <Text style={styles.subText}>Gross margin improvement of 20bp and operating margin improvement of 30bp to 14.9%.</Text>
             <Text style={styles.subHeader}>2019 EARNINGS EXPECTATIONS</Text>
             <Text style={styles.subText}>Mid-single-digit percentage organic growth in operating profit.</Text>
             <Text style={styles.subText}> A DKK translation impact on operating profit of around zero, based on the spot rates as at 5 February.</Text>
+
 
             <Paragraph style={styles.subText}>CEO Cees ’t Hart says: “We delivered a strong set of results for 2018.
               In line with our ambitions for SAIL’22, we accelerated top-line growth, improved margins,

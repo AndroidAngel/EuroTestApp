@@ -9,7 +9,7 @@ class BaseEurolandAppActivity extends React.Component {
 
 
   state = {
-    activityName: 'test',
+    activityName: 'test', 
     activityData: {}
   };
 
@@ -26,8 +26,6 @@ class BaseEurolandAppActivity extends React.Component {
 
   // async await
   async componentDidMount() {
-
-
     this.initializeCrashlytics(this.state.activityName, this.state.activityData);
     firebase.analytics().logEvent(`componentDidMount${this.state.activityName}`);
 
@@ -43,15 +41,11 @@ class BaseEurolandAppActivity extends React.Component {
         {name: 'request', value: 0}
       ]
     );
-
     this.updateAndStopWillMountToDidMountTrace();
-
   }
 
   async componentWillMount() {
-
     this.initializeWillMountToDidMountTrace();
-
     await this.customTrace('component_will_mount_trace',
       [
         // {name: 'user_id', value: firebase.auth().currentUser.uid},
@@ -66,7 +60,6 @@ class BaseEurolandAppActivity extends React.Component {
   }
 
   async initializeWillMountToDidMountTrace() {
-
     this.willMountToDidMountTrace = firebase.perf().newTrace('initializeWillMountToDidMountTrace');
     await this.willMountToDidMountTrace.start();
     await this.willMountToDidMountTrace.putAttribute('endpoint', this.endpoint);
@@ -75,9 +68,7 @@ class BaseEurolandAppActivity extends React.Component {
   }
 
   async updateAndStopWillMountToDidMountTrace() {
-
     await this.willMountToDidMountTrace.putAttribute('did_mount_time', new Date().toDateString());
-
     await this.willMountToDidMountTrace.stop();
   }
 
@@ -123,8 +114,9 @@ class BaseEurolandAppActivity extends React.Component {
   initializeCrashlytics(activityName, activityData) {
     firebase.crashlytics().log('this is a crash messsage test');
     firebase.crashlytics().enableCrashlyticsCollection();
+    firebase.crashlytics().recordError(0, 'record_error_crash');
+
     // initialize crashlytics here
-    //enableCrashlyticsCollection() returns void;
     // crash() returns void;
     // log(message) returns void;
     // recordError(code, message) returns void;
@@ -132,17 +124,16 @@ class BaseEurolandAppActivity extends React.Component {
     // setFloatValue(key, value) returns void;
     // setIntValue(key, value) returns void;
     // setStringValue(key, value) returns void;
-    // setUserIdentifier(userId) returns void;
-
+    firebase.crashlytics().setUserIdentifier(userId);
 
   }
 
   logEvent(eventName, target ) {
     firebase.analytics().logEvent(eventName, target);
   }
-  setUserProperty(name, value ) {
-    firebase.analytics().logEvent(name, value);
-  }
+  // setUserProperty(eventName, value ) {
+  //   firebase.analytics().setUserProperty(eventName, value);
+  // }
  
 
   navigate(navigationTarget) {
