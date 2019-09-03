@@ -137,9 +137,13 @@ class BaseEurolandAppActivity extends React.Component {
 
   }
 
-  logEvent(eventName, target) {
+  logEvent(eventName, target ) {
     firebase.analytics().logEvent(eventName, target);
   }
+  setUserProperty(name, value ) {
+    firebase.analytics().logEvent(name, value);
+  }
+ 
 
   navigate(navigationTarget) {
     this.props.navigation.navigate(navigationTarget);
