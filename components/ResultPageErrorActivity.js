@@ -14,7 +14,7 @@ class ResultPageErrorActivity extends BaseEurolandAppActivity {
     };
     }
     signupError(){
-      this.logEvent('result', {result: 'error page'});
+      this.logEvent('signup_oauth_error_page', {result: 'error page'});
       this.navigate('SignupPlatform');
     }
 

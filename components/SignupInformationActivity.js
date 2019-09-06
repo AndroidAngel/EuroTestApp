@@ -14,24 +14,36 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
     };
     }
     signupInformation(){
-      this.logEvent('result', {signup_information: 'Success'});
-
+      this.logEvent('signup_information_next', {result: 'success'});
       this.navigate('SignupProfession');
+    }
+
+    signupQuitProcess(){
+      this.logEvent('signup_quit' , {quit: 'signup_information'});
+      this.navigate('Dashboard');
     }
 
   render() {
     this.logEvent('onLoadSignupInformation', {target: 'SignupInformationActivity' });
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Information activity</Text>
-        <Text style={styles.titleText}>EMAIL text</Text>
-        <Text style={styles.titleText}>NAME text</Text>
-        <Text style={styles.titleText}>LASTNAME text</Text>
-
+        <Text style={styles.headerText}>Complete you registration</Text>
+        <Text style={styles.titleText}>To complete registration for</Text>
+        <Text style={styles.emailText}>sampleemail@gmail.com</Text>
+        <Text style={styles.titleText}>please fill the following fields</Text>
+        <Text style={styles.infoText}>Skyler (name)</Text>
+        <Text style={styles.infoText}>White (lastname)</Text>
+        <Text style={styles.infoText}>password (not available on social media)</Text>
+        <Text style={styles.infoText}>confirm password (not available on social media)</Text>
+ 
           <Button mode="contained" color="green"
           onPress={this.signupInformation.bind(this)} style={styles.button}>
-          Next </Button>
+           Next </Button> 
 
+
+           <Button mode="contained" color="red"
+          onPress={this.signupQuitProcess.bind(this)} style={styles.button}>
+           Quit </Button> 
       </View>
     );
   }
@@ -46,19 +58,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   button: {
+    paddingTop: 15,
     margin: 5,
     textAlign: 'center',
     height: 50,
   },
   titleText: {
-    fontSize: 36,
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 5,
+    color: '#111111',
+  },
+  infoText:{
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 5,
+    color: '#111111',
+
+  },
+  emailText:{
+    fontSize: 18,
     textAlign: 'center',
     margin: 5,
     color: '#111111',
     fontWeight: 'bold'
   },
   headerText: {
-    fontSize: 18,
+    fontSize: 30,
+    paddingTop: 15,
     fontWeight: 300,
     textAlign: 'center',
     color: '#111111',

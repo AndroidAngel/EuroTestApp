@@ -11,6 +11,7 @@ import SignupOpenAuthenticationActivity from './components/SignupOpenAuthenticat
 import SignupProfessionActivity from './components/SignupProfessionActivity';
 import SuccessScreenActivity from './components/SuccessScreenActivity';
 import ResultPageErrorActivity from './components/ResultPageErrorActivity';
+import DashboardActivity from './components/DashboardActivity';
 import BaseEurolandAppActivity  from './components/BaseEurolandAppActivity.js';
 
 import firebase from 'react-native-firebase';
@@ -22,12 +23,16 @@ const RootStack = createStackNavigator(
     DownloadReports: {screen: DownloadReportsActivity},
     AnnualReport: {screen: AnnualReportActivity},
     SustainabilityReport: {screen: SustainabilityReportActivity},
+
+
+    
     SignupPlatform: {screen: SignupPlatformActivity},
     SignupInformation: {screen: SignupInformationActivity},
     SignupOpenAuthentication: {screen: SignupOpenAuthenticationActivity},
     SignupProfession: {screen: SignupProfessionActivity},
     SuccessScreen: {screen: SuccessScreenActivity},
-    ResultPageError: {screen: ResultPageErrorActivity}
+    ResultPageError: {screen: ResultPageErrorActivity},
+    Dashboard: {screen: DashboardActivity}
   },
   {
     initialRouteName: 'SignupPlatform',

@@ -14,22 +14,22 @@ class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
     };
     }
     signupResultSuccess(){
-        this.logEvent('result', {result: 'Success'});
+        this.logEvent('result_success_oauth', {result: 'Success'});
         this.navigate('SignupInformation');
       }
       signupResultError(){
-        this.logEvent('result', {result: 'Error'});
-        this.navigate('ResultPageError');
+        this.logEvent('result_error_oauth', {result: 'Error'});
+        this.navigate('SignupPlatform');
       }
 
   render() {
     this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthenticationActivity' });
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Signup Open Authentication Activity</Text>
-        <Text style={styles.titleText}>Facebook</Text>
-        <Text style={styles.titleText}>Google</Text>
-        <Text style={styles.titleText}>LinkedIn</Text>
+        <Text style={styles.headerText}>Signup Open Authentication Page</Text>
+        <Text style={styles.infoText}>Facebook</Text>
+        <Text style={styles.infoText}>Google</Text>
+        <Text style={styles.infoText}>LinkedIn</Text>
         
 
           <Button mode="contained" color="green"
@@ -54,18 +54,33 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   button: {
+    paddingTop: 15,
     margin: 5,
     height: 50,
   },
   titleText: {
-    fontSize: 36,
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 5,
+    color: '#111111',
+  },
+  infoText: {
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 5,
+    color: '#111111',
+
+  },
+  emailText: {
+    fontSize: 18,
     textAlign: 'center',
     margin: 5,
     color: '#111111',
     fontWeight: 'bold'
   },
   headerText: {
-    fontSize: 18,
+    fontSize: 30,
+    paddingTop: 15,
     fontWeight: 300,
     textAlign: 'center',
     color: '#111111',

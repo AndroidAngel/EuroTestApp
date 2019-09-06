@@ -5,32 +5,27 @@ import { Button } from 'react-native-paper';
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 
-class SucessScreenActivity extends BaseEurolandAppActivity {
+class DashboardActivity extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
-      activityName: 'SucessScreenActivity',
+      activityName: 'DashboardActivity',
       activityData: {}
     };
     }
-    signupSuccess(){
-      this.logEvent('signup_registration_success', {result: 'Success'});
+    gotoSignupPlatform(){
       this.navigate('SignupPlatform');
     }
 
   render() {
-    this.logEvent('onLoadSucessScreen', {target: 'SucessScreenActivity' });
+    this.logEvent('onLoadDashboard', {target: 'DashboardActivity' });
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>We've created your profile.</Text>
-        <Text style={styles.titleText}>You can now explore more of</Text>
-        <Text style={styles.emailText}>MyIRApp</Text>  
-        <Text style={styles.titleText}>features.</Text>
-      
-
+        <Text style={styles.headerText}>THIS IS DASHBOARD</Text>
+    
           <Button mode="contained" color="green"
-          onPress={this.signupSuccess.bind(this)} style={styles.button}>
-          Go to dashboard </Button>
+          onPress={this.gotoSignupPlatform.bind(this)} style={styles.button}>
+          Signup </Button>
 
       </View>
     );
@@ -81,5 +76,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-export default SucessScreenActivity;
+export default DashboardActivity;
 

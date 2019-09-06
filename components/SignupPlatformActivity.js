@@ -14,13 +14,13 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
   };
   }
   signupEmail(){
-    this.logEvent('signup_email', {method: 'email_success'});
+    this.logEvent('signup_email', {result: 'success'});
     // this.setUserProperty('result' , {result: 'success'});
 
     this.navigate('SignupInformation');
   }
   signupGoogle(){
-    this.logEvent('signup_google', {method: 'google'});
+    this.logEvent('signup_google', {result: 'success'});
     // this.setUserProperty('result' , {result: 'success'});
 
 
@@ -31,13 +31,13 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
 
   
   signupFacebook(){
-    this.logEvent('signup_facebook', {method: 'facebook'} );
+    this.logEvent('signup_facebook', {result: 'success'} );
     // this.setUserProperty('result' , {result: 'success'});
 
     this.navigate('SignupOpenAuthentication');
   }
   signupLinkedin(){
-    this.logEvent('signup_linkedin', {method: 'linkedin'});
+    this.logEvent('signup_linkedin', {result: 'success'});
     // this.setUserProperty('result' , {result: 'success'});
     this.navigate('SignupOpenAuthentication');
   }
@@ -46,8 +46,8 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
     this.logEvent('onLoadSignupPlatformActivity', {target: 'SignupPlatformActivity' });
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Signup into</Text>
-        <Text style={styles.titleText}>EURO APP</Text>
+        <Text style={styles.titleText}>Signup into</Text>
+        <Text style={styles.headerText}>EURO APP</Text>
 
         <Button mode="contained" color="green"
           onPress={this.signupEmail.bind(this)} style={styles.button}>
@@ -79,19 +79,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   button: {
+    paddingTop: 20,
     textAlign: 'center',
     margin: 5,
     height: 50,
   },
   titleText: {
-    fontSize: 36,
+    fontSize: 18,
+    paddingTop: 15,
     textAlign: 'center',
     margin: 5,
     color: '#111111',
     fontWeight: 'bold'
   },
   headerText: {
-    fontSize: 18,
+    fontSize: 36,
+    paddingTop: 15,
     fontWeight: 300,
     textAlign: 'center',
     color: '#111111',
