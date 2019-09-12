@@ -19,11 +19,12 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
     }
 
     signupQuitProcess(){
-      this.logEvent('signup_quit' , {quit: 'signup_information'});
+      this.logEvent('signup_quit_information' , {quit: 'signup_information'});
       this.navigate('Dashboard');
     }
-
+  
   render() {
+  this.setCurrentScreen('SignupInformation');
     this.logEvent('onLoadSignupInformation', {target: 'SignupInformationActivity' });
     return (
       <View style={styles.container}>
@@ -39,7 +40,6 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
           <Button mode="contained" color="green"
           onPress={this.signupInformation.bind(this)} style={styles.button}>
            Next </Button> 
-
 
            <Button mode="contained" color="red"
           onPress={this.signupQuitProcess.bind(this)} style={styles.button}>

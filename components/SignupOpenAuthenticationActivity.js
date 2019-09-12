@@ -21,9 +21,10 @@ class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
         this.logEvent('result_error_oauth', {result: 'Error'});
         this.navigate('SignupPlatform');
       }
-
+  
   render() {
-    this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthenticationActivity' });
+  this.setCurrentScreen('SignupOpenAuthentication');
+ this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthenticationActivity' });
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Signup Open Authentication Page</Text>

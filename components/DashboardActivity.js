@@ -18,7 +18,9 @@ class DashboardActivity extends BaseEurolandAppActivity {
     }
 
   render() {
+    this.setCurrentScreen('dashboard');
     this.logEvent('onLoadDashboard', {target: 'DashboardActivity' });
+
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>THIS IS DASHBOARD</Text>

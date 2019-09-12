@@ -5,12 +5,11 @@ import PressReleaseActivity from './components/PressReleaseActivity';
 import DownloadReportsActivity from './components/DownloadReportsActivity';
 import AnnualReportActivity from './components/AnnualReportActivity';
 import SustainabilityReportActivity from './components/SustainabilityReportActivity';
+
 import SignupPlatformActivity from './components/SignupPlatformActivity';
 import SignupInformationActivity from './components/SignupInformationActivity';
 import SignupOpenAuthenticationActivity from './components/SignupOpenAuthenticationActivity';
 import SignupProfessionActivity from './components/SignupProfessionActivity';
-import SuccessScreenActivity from './components/SuccessScreenActivity';
-import ResultPageErrorActivity from './components/ResultPageErrorActivity';
 import DashboardActivity from './components/DashboardActivity';
 import BaseEurolandAppActivity  from './components/BaseEurolandAppActivity.js';
 
@@ -30,8 +29,8 @@ const RootStack = createStackNavigator(
     SignupInformation: {screen: SignupInformationActivity},
     SignupOpenAuthentication: {screen: SignupOpenAuthenticationActivity},
     SignupProfession: {screen: SignupProfessionActivity},
-    SuccessScreen: {screen: SuccessScreenActivity},
-    ResultPageError: {screen: ResultPageErrorActivity},
+
+ 
     Dashboard: {screen: DashboardActivity}
   },
   {

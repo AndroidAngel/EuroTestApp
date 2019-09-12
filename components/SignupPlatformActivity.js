@@ -22,14 +22,13 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
   signupGoogle(){
     this.logEvent('signup_google', {result: 'success'});
     // this.setUserProperty('result' , {result: 'success'});
+    
 
 
     this.navigate('SignupOpenAuthentication');
   }
 
   //TODO put or try third parameter ("success")
-
-  
   signupFacebook(){
     this.logEvent('signup_facebook', {result: 'success'} );
     // this.setUserProperty('result' , {result: 'success'});
@@ -42,8 +41,21 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
     this.navigate('SignupOpenAuthentication');
   }
 
+  signupResultSuccess(){
+    this.logEvent('result_success_oauth', {result: 'Success'});
+    this.setState({ defaultAnimationDialog: false });
+    this.navigate('SignupInformation');
+
+  }
+  signupResultError(){
+    this.logEvent('result_error_oauth', {result: 'Error'});
+    this.setState({ defaultAnimationDialog: false });
+    this.navigate('SignupPlatform');
+  }
+  
   render() {
-    this.logEvent('onLoadSignupPlatformActivity', {target: 'SignupPlatformActivity' });
+    this.setCurrentScreen('SignupPlatform');
+    this.logEvent('onLoadSignupPlatform', {target: 'SignupPlatformActivity' });
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Signup into</Text>
@@ -64,7 +76,6 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
           <Button mode="contained" color="green"
           onPress={this.signupLinkedin.bind(this)} style={styles.button}>
           LinkedIn </Button>
-
       </View>
     );
   }

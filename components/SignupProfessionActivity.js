@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import Dialog, { DialogButton, DialogContent, DialogFooter, DialogTitle } from 'react-native-popup-dialog';
 import { Button } from 'react-native-paper';
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
@@ -9,6 +10,8 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
+        defaultAnimationDialog: false,
+        closingDialogAnimation: false,
       activityName: 'SignupProfessionActivity',
       activityData: {}
     };
@@ -16,19 +19,28 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
    
       signupProfessionSuccess(){
         this.logEvent('signup_profession_done', {result: 'Success'});
-        this.navigate('SuccessScreen');
+        this.setState({ defaultAnimationDialog: false });
+ 
       }
 
       signupProfessionSkip(){
         this.logEvent('signup_profession_skip', {result: 'Skipped'});
-        this.navigate('SuccessScreen');
+        this.setState({ defaultAnimationDialog: false });
+     
       }
       signupQuitProcess(){
-        this.logEvent('signup_quit' , {quit: 'signup_profession'});
+        this.logEvent('signup_quit_profession' , {quit: 'signup_profession'});
         this.navigate('Dashboard');
       }
 
+      signupSuccess(){
+        this.logEvent('signup_registration_success', {result: 'Success'});
+        this.setState({ defaultAnimationDialog: false });
+        this.navigate('Dashboard');
+      }
+    
   render() {
+     this.setCurrentScreen('SignupProfession');
     this.logEvent('onLoadSignupProfession', {target: 'SignupProfessionActivity' });
     return (
       <View style={styles.container}>
@@ -39,16 +51,46 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
         <Text style={styles.infoText}>Profession (optional)</Text>
         
           <Button mode="contained" color="blue"
-          onPress={this.signupProfessionSuccess.bind(this)} style={styles.button}>
+            onPress={() => {this.setState({defaultAnimationDialog: true,});}} style={styles.button}>
           Done</Button>
+          
+          
           <Button mode="contained" color="red"
-          onPress={this.signupProfessionSkip.bind(this)} style={styles.button}>
+           onPress={() => {this.setState({defaultAnimationDialog: true,});}} style={styles.button}>
           Skip for now</Button>
 
 
           <Button mode="contained" color="red"
           onPress={this.signupQuitProcess.bind(this)} style={styles.button}>
            Quit </Button> 
+
+           <Dialog
+          onDismiss={() => {
+            this.setState({ defaultAnimationDialog: false });
+          }}
+          width={0.9}
+          visible={this.state.defaultAnimationDialog}
+          rounded
+          actionsBordered
+          dialogTitle={
+            <DialogTitle
+              title="We've created your profile. You can now explore more of MyIRApp features."
+              style={{
+                backgroundColor: '#F7F7F8',
+              }}
+              hasTitleBar={false}
+              align="center" />
+          }
+          footer={
+            <DialogFooter>
+              <DialogButton
+                text="Go to Dashboard"
+                color="green"
+                bordered
+                onPress={this.signupSuccess.bind(this)}
+                key="buttonsucess" />
+            </DialogFooter>} >
+        </Dialog>
 
 
       </View>

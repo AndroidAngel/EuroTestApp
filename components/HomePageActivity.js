@@ -16,7 +16,7 @@ class HomePageActivity extends BaseEurolandAppActivity {
   _onPressPressReleaseBtn() {
     this.logEvent('onPressGotoPressReleaseBtn', { target: 'GotoPressRelease' });
     // this.logEvent('step_home', null );
-    this.navigate('SignupPlatform');
+    this.navigate('PressRelease');
    this.setState({'activity_log': {button_title: 'get started', target_screen: 'press release page'}});
   }
   render() {

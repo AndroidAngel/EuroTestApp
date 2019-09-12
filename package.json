@@ -19,6 +19,7 @@
     "appcenter": "2.3.0",
     "appcenter-analytics": "2.3.0",
     "appcenter-crashes": "2.3.0",
+    "appcenter-push": "^2.3.0",
     "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
     "link": "^0.1.5",
     "material-ui": "^0.20.2",

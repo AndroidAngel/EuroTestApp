@@ -37,7 +37,7 @@ class SustainabilityReportActivity extends BaseEurolandAppActivity {
   //Yes Notified when new things are shared
   _onPressYesNotified() {
     this.logEvent('onPressYesNotified', { target: 'yes_notified' });
-      this.setState({ closingDialogAnimation: true });
+    this.setState({ closingDialogAnimation: true });
     this.setState({ defaultAnimationDialog: false });
   
 
