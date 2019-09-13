@@ -16,7 +16,7 @@ import BaseEurolandAppActivity  from './components/BaseEurolandAppActivity.js';
 import firebase from 'react-native-firebase';
 
 const RootStack = createStackNavigator(
-  {
+  { 
     HomePage: {screen: HomePageActivity},
     PressRelease: {screen: PressReleaseActivity},
     DownloadReports: {screen: DownloadReportsActivity},
@@ -37,6 +37,7 @@ const RootStack = createStackNavigator(
     initialRouteName: 'SignupPlatform',
   }
 );
+
 
 const App = createAppContainer(RootStack);  
 

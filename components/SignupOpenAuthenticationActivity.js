@@ -10,7 +10,7 @@ class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
       super(props);
       this.state = {
       activityName: 'SignupOpenAuthenticationActivity',
-      activityData: {}
+      activityData: []
     };
     }
     signupResultSuccess(){
@@ -23,7 +23,7 @@ class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
       }
   
   render() {
-  this.setCurrentScreen('SignupOpenAuthentication');
+  this.setCurrentScreen('SignupOpenAuthentication', 'SignupOpenAuthenticationActivity');
  this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthenticationActivity' });
     return (
       <View style={styles.container}>

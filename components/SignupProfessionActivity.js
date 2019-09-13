@@ -13,7 +13,7 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
         defaultAnimationDialog: false,
         closingDialogAnimation: false,
       activityName: 'SignupProfessionActivity',
-      activityData: {}
+      activityData: []
     };
     }
    
@@ -40,7 +40,7 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
       }
     
   render() {
-     this.setCurrentScreen('SignupProfession');
+     this.setCurrentScreen('SignupProfession', 'SignupProfessionActivity');
     this.logEvent('onLoadSignupProfession', {target: 'SignupProfessionActivity' });
     return (
       <View style={styles.container}>
@@ -74,6 +74,7 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
           actionsBordered
           dialogTitle={
             <DialogTitle
+              title="Congats"
               title="We've created your profile. You can now explore more of MyIRApp features."
               style={{
                 backgroundColor: '#F7F7F8',

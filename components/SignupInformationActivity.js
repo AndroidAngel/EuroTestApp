@@ -10,7 +10,7 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
       super(props);
       this.state = {
       activityName: 'SignupInformationActivity',
-      activityData: {}
+      activityData: []
     };
     }
     signupInformation(){
@@ -19,12 +19,12 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
     }
 
     signupQuitProcess(){
-      this.logEvent('signup_quit_information' , {quit: 'signup_information'});
+      this.logEvent('signup_quit_information' ,{quit: 'signup information'});
       this.navigate('Dashboard');
     }
   
   render() {
-  this.setCurrentScreen('SignupInformation');
+  this.setCurrentScreen('SignupInformation', 'SignupInformationActivity');
     this.logEvent('onLoadSignupInformation', {target: 'SignupInformationActivity' });
     return (
       <View style={styles.container}>

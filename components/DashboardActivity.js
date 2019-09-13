@@ -18,7 +18,7 @@ class DashboardActivity extends BaseEurolandAppActivity {
     }
 
   render() {
-    this.setCurrentScreen('dashboard');
+    this.setCurrentScreen('Dashboard');
     this.logEvent('onLoadDashboard', {target: 'DashboardActivity' });
 
     return (

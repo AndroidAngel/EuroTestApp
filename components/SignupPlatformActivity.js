@@ -10,7 +10,7 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
     super(props);
     this.state = {
     activityName: 'SignupPlatformActivity',
-    activityData: {}
+    activityData: []
   };
   }
   signupEmail(){
@@ -22,9 +22,6 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
   signupGoogle(){
     this.logEvent('signup_google', {result: 'success'});
     // this.setUserProperty('result' , {result: 'success'});
-    
-
-
     this.navigate('SignupOpenAuthentication');
   }
 
@@ -40,23 +37,12 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
     // this.setUserProperty('result' , {result: 'success'});
     this.navigate('SignupOpenAuthentication');
   }
-
-  signupResultSuccess(){
-    this.logEvent('result_success_oauth', {result: 'Success'});
-    this.setState({ defaultAnimationDialog: false });
-    this.navigate('SignupInformation');
-
-  }
-  signupResultError(){
-    this.logEvent('result_error_oauth', {result: 'Error'});
-    this.setState({ defaultAnimationDialog: false });
-    this.navigate('SignupPlatform');
-  }
   
   render() {
-    this.setCurrentScreen('SignupPlatform');
+    this.setCurrentScreen('SignupPlatform', 'SignupPlatformActivity');
     this.logEvent('onLoadSignupPlatform', {target: 'SignupPlatformActivity' });
     return (
+      
       <View style={styles.container}>
         <Text style={styles.titleText}>Signup into</Text>
         <Text style={styles.headerText}>EURO APP</Text>
@@ -83,6 +69,8 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent: 'center',
+    backgroundColor: '#fff',
   },
   row: {
     flexDirection: 'row',

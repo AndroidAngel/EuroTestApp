@@ -9,8 +9,8 @@ class BaseEurolandAppActivity extends React.Component {
 
 
   state = {
-    activityName: 'test', 
-    activityData: {}
+    activityName: '', 
+    activityData: []
   };
 
 
@@ -48,7 +48,8 @@ class BaseEurolandAppActivity extends React.Component {
 
   async componentWillMount() {
     this.initializeWillMountToDidMountTrace();
-    await this.customTrace((`component_will_mount_trace${this.state.activityName}`),
+    await this.customTrace((this.state.activityName),
+    // await this.customTrace((`component_will_mount_trace${this.state.activityName}`),
       [
         // {name: 'user_id', value: firebase.auth().currentUser.uid},
         {name: 'endpoint', value: this.endpoint},
@@ -87,9 +88,8 @@ class BaseEurolandAppActivity extends React.Component {
       ]
     );
   }
-
   async componentWillUpdate() {
-    await this.customTrace('component_will_update_trace' ,{activityName},
+    await this.customTrace((this.state.activityName),
       [
         // {name: 'user_id', value: firebase.auth().currentUser.uid},
         {name: 'endpoint', value: this.endpoint},
@@ -100,7 +100,7 @@ class BaseEurolandAppActivity extends React.Component {
   }
 
   async componentDidUpdate() {
-    await this.customTrace('component_did_update_trace',
+    await this.customTrace((this.state.activityName),
       [
         // {name: 'user_id', value: firebase.auth().currentUser.uid},
         {name: 'endpoint', value: this.endpoint},
@@ -137,9 +137,10 @@ class BaseEurolandAppActivity extends React.Component {
   //   firebase.analytics().setUserProperty(eventName, value);
   // }
  
-  setCurrentScreen(screenName, className) {
-    firebase.analytics().setCurrentScreen(screenName, className);
+  setCurrentScreen(screenName, screenClassOverride) {
+    firebase.analytics().setCurrentScreen(screenName, screenClassOverride);
   }
+  // setScreenName()
 
   navigate(navigationTarget) {
     this.props.navigation.navigate(navigationTarget);
