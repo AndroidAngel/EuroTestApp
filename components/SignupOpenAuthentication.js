@@ -5,7 +5,7 @@ import { Button } from 'react-native-paper';
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 
-class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
+class SignupOpenAuthentication extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
@@ -14,17 +14,17 @@ class SignupOpenAuthenticationActivity extends BaseEurolandAppActivity {
     };
     }
     signupResultSuccess(){
-        this.logEvent('result_success_oauth', {result: 'Success'});
+        this.logEvent('result_oauth', {result: 'Success'});
         this.navigate('SignupInformation');
       }
       signupResultError(){
-        this.logEvent('result_error_oauth', {result: 'Error'});
+        this.logEvent('result_oauth', {result: 'Error'});
         this.navigate('SignupPlatform');
       }
   
   render() {
-  this.setCurrentScreen('SignupOpenAuthentication', 'SignupOpenAuthenticationActivity');
- this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthenticationActivity' });
+  this.setCurrentScreen('SignupOpenAuthentication', 'SignupOpenAuthentication');
+ this.logEvent('onLoadSignupOpenAuthentication', {target: 'SignupOpenAuthentication' });
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Signup Open Authentication Page</Text>
@@ -90,5 +90,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-export default SignupOpenAuthenticationActivity;
+export default SignupOpenAuthentication;
 

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">euroapp</string>
 
+    <string name="facebook_app_id">427217784570266</string>
+
 
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">ASK_JAVASCRIPT</string>
-<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
     </resources>

@@ -6,7 +6,7 @@ import { Button } from 'react-native-paper';
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 
-class SignupProfessionActivity extends BaseEurolandAppActivity {
+class SignupProfession extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
@@ -18,23 +18,19 @@ class SignupProfessionActivity extends BaseEurolandAppActivity {
     }
    
       signupProfessionSuccess(){
-        this.logEvent('signup_profession_done', {result: 'Success'});
+        this.logEvent('signup_profession', {result: 'Success'});
         this.setState({ defaultAnimationDialog: false });
  
       }
 
-      signupProfessionSkip(){
-        this.logEvent('signup_profession_skip', {result: 'Skipped'});
+      signupProfessionSkipped(){
+        this.logEvent('signup_profession', {result: 'Skipped'});
         this.setState({ defaultAnimationDialog: false });
      
       }
-      signupQuitProcess(){
-        this.logEvent('signup_quit_profession' , {quit: 'signup_profession'});
-        this.navigate('Dashboard');
-      }
-
-      signupSuccess(){
-        this.logEvent('signup_registration_success', {result: 'Success'});
+  
+      signupSuccessDialog(){
+        this.logEvent('signup_success', {result: 'Success'});
         this.setState({ defaultAnimationDialog: false });
         this.navigate('Dashboard');
       }
@@ -149,5 +145,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-export default SignupProfessionActivity;
+export default SignupProfession;
 

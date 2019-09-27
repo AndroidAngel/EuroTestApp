@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import firebase from 'react-native-firebase';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
-class SignupPlatformActivity extends BaseEurolandAppActivity {
+class SignupPlatform extends BaseEurolandAppActivity {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,26 +15,26 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
   };
   }
   signupEmail(){
-    this.logEvent('signup_email', {result: 'success'});
+    this.logEvent('signup', {method: 'email'});
     // this.setUserProperty('result' , {result: 'success'});
 
     this.navigate('SignupInformation');
   }
   signupGoogle(){
-    this.logEvent('signup_google', {result: 'success'});
+    this.logEvent('signup', {method: 'google'});
     // this.setUserProperty('result' , {result: 'success'});
     this.navigate('SignupOpenAuthentication');
   }
 
   //TODO put or try third parameter ("success")
   signupFacebook(){
-    this.logEvent('signup_facebook', {result: 'success'} );
+    this.logEvent('signup', {method: 'facebook'} );
     // this.setUserProperty('result' , {result: 'success'});
 
     this.navigate('SignupOpenAuthentication');
   }
   signupLinkedin(){
-    this.logEvent('signup_linkedin', {result: 'success'});
+    this.logEvent('signup', {method: 'linkedin'});
     // this.setUserProperty('result' , {result: 'success'});
     this.navigate('SignupOpenAuthentication');
   }
@@ -60,8 +61,19 @@ class SignupPlatformActivity extends BaseEurolandAppActivity {
           Facebook </Button>
 
           <Button mode="contained" color="green"
-          onPress={this.signupLinkedin.bind(this)} style={styles.button}>
+          onPress={this.signupLinkedin.bind(this)} style={styles.facebookButton}>
           LinkedIn </Button>
+
+          {/* <FontAwesome.Button
+              style={styles.facebookButton}
+              name="facebook"
+              onPress={this.signupFacebook}
+              backgroundColor={COLOR_FACEBOOK}
+            >
+              <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
+            </FontAwesome.Button> */}
+
+
       </View>
     );
   }
@@ -100,7 +112,17 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     fontWeight: 'bold'
-  }
+  },
+  facebookButton: {
+    width: 300,
+    height: 45,
+    borderRadius: 6,
+    justifyContent: 'center',
+  },
+  loginButtonTitle: {
+    fontSize: 18,
+    color: 'white'
+  },
 });
-export default SignupPlatformActivity;
+export default SignupPlatform;
 

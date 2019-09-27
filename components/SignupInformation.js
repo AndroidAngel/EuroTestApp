@@ -5,27 +5,27 @@ import { Button } from 'react-native-paper';
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 
-class SignupInformationActivity extends BaseEurolandAppActivity {
+class SignupInformation extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
-      activityName: 'SignupInformationActivity',
+      activityName: 'SignupInformation',
       activityData: []
     };
     }
     signupInformation(){
-      this.logEvent('signup_information_next', {result: 'success'});
+      this.logEvent('signup_information', {result: 'success'});
       this.navigate('SignupProfession');
     }
 
-    signupQuitProcess(){
-      this.logEvent('signup_quit_information' ,{quit: 'signup information'});
+    signupSkipped(){
+      this.logEvent('signup_information' ,{result: 'skipped'});
       this.navigate('Dashboard');
     }
   
   render() {
-  this.setCurrentScreen('SignupInformation', 'SignupInformationActivity');
-    this.logEvent('onLoadSignupInformation', {target: 'SignupInformationActivity' });
+  this.setCurrentScreen('SignupInformation', 'SignupInformation');
+    this.logEvent('onLoadSignupInformation', {target: 'SignupInformation' });
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Complete you registration</Text>
@@ -41,9 +41,9 @@ class SignupInformationActivity extends BaseEurolandAppActivity {
           onPress={this.signupInformation.bind(this)} style={styles.button}>
            Next </Button> 
 
-           <Button mode="contained" color="red"
-          onPress={this.signupQuitProcess.bind(this)} style={styles.button}>
-           Quit </Button> 
+           <Button color="blue"
+          onPress={this.signupSkipped.bind(this)} style={styles.button}>
+           Skipped </Button> 
       </View>
     );
   }
@@ -94,5 +94,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-export default SignupInformationActivity;
+export default SignupInformation;
 

@@ -5,7 +5,7 @@ import { Button } from 'react-native-paper';
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
 
-class DashboardActivity extends BaseEurolandAppActivity {
+class Dashboard extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
@@ -78,5 +78,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
-export default DashboardActivity;
+export default Dashboard;
 
