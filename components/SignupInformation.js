@@ -13,7 +13,7 @@ class SignupInformation extends BaseEurolandAppActivity {
       activityData: []
     };
     }
-    signupInformation(){
+    signupInformationNext(){
       this.logEvent('signup_information', {result: 'success'});
       this.navigate('SignupProfession');
     }
@@ -38,12 +38,24 @@ class SignupInformation extends BaseEurolandAppActivity {
         <Text style={styles.infoText}>confirm password (not available on social media)</Text>
  
           <Button mode="contained" color="green"
-          onPress={this.signupInformation.bind(this)} style={styles.button}>
+          onPress={this.signupInformationNext.bind(this)} style={styles.button}>
            Next </Button> 
 
            <Button color="blue"
           onPress={this.signupSkipped.bind(this)} style={styles.button}>
            Skipped </Button> 
+
+           <View style={styles.textInputContainer}>
+              <TextInput
+                style={styles.textInput}
+                textContentType='emailAddress'
+                keyboardType='email-address'
+                placeholder="Enter your email"
+              >
+              </TextInput>
+            </View>
+
+
       </View>
     );
   }

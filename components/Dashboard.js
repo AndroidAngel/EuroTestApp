@@ -9,7 +9,7 @@ class Dashboard extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
-      activityName: 'DashboardActivity',
+      activityName: 'Dashboard',
       activityData: {}
     };
     }
@@ -19,7 +19,7 @@ class Dashboard extends BaseEurolandAppActivity {
 
   render() {
     this.setCurrentScreen('Dashboard');
-    this.logEvent('onLoadDashboard', {target: 'DashboardActivity' });
+    this.logEvent('onLoadDashboard', {target: 'Dashboard' });
 
     return (
       <View style={styles.container}>

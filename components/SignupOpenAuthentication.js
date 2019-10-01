@@ -9,7 +9,7 @@ class SignupOpenAuthentication extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
       this.state = {
-      activityName: 'SignupOpenAuthenticationActivity',
+      activityName: 'SignupOpenAuthentication',
       activityData: []
     };
     }

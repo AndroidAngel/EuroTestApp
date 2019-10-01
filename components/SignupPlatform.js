@@ -17,7 +17,7 @@ import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 // Calling the following function will open the FB login dialogue:
 export async function facebookLogin() {
   try {
-    const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
     if (result.isCancelled) {
       // handle this however suites the flow of your app
@@ -50,35 +50,52 @@ class SignupPlatform extends BaseEurolandAppActivity {
   constructor(props) {
     super(props);
     this.state = {
-      activityName: 'SignupPlatformActivity',
+      activityName: 'SignupPlatform',
       activityData: []
     };
   }
 
   signupEmail() {
-    // this.firebase.logEvent('signup', { method: 'email' });
-   this.logEvent('signup', { method: 'email' });
+   this.logEvent('signup', 
+   { 
+   method: 'email',
+   result: JSON.stringify('success')});
     this.navigate('SignupInformation');
   }
   signupGoogle() {
-    this.logEvent('signup', { method: 'google' });
+    this.logEvent('signup', 
+    { 
+      method: 'google',
+    result: JSON.stringify('success')});
     this.navigate('SignupOpenAuthentication');
   }
 
-  //TODO put or try third parameter ("success")
   signupFacebook() {
-    this.logEvent('signup', { method: 'facebook' });
+    this.logEvent('signup', 
+    { 
+      method: 'facebook',
+    result: JSON.stringify('success')});
     this.navigate('SignupOpenAuthentication');
   }
   signupLinkedin() {
-    this.logEvent('signup', { method: 'linkedin' });
-    // this.setUserProperty('result' , {result: 'success'});
+    this.logEvent('signup', 
+    { 
+      method: 'linkedin',
+      result: JSON.stringify('success')});
     this.navigate('SignupOpenAuthentication');
   }
   
   render() {
-    this.setCurrentScreen('SignupPlatform', 'SignupPlatformActivity');
-    this.logEvent('onLoadSignupPlatform', { target: 'SignupPlatformActivity' });
+    this.setCurrentScreen('SignupPlatform', 'SignupPlatform');
+    this.logEvent('onLoadSignupPlatform', 
+    { 
+      target: 'SignupPlatform',
+       params1: JSON.stringify(['value1', 'value2', 'value3' ])
+      // JSON.stringify(['value1', 'value2', 'value3'])
+      // userData: 'value4,value5,value6'
+     });
+
+
     const Divider = (props) => {
       return <View {...props}>
         <View style={styles.line}></View>
@@ -124,7 +141,7 @@ class SignupPlatform extends BaseEurolandAppActivity {
         <FontAwesome.Button
           style={styles.facebookButton}
           name="facebook"
-          onPress={this.facebookLogin}
+          onPress={facebookLogin}
           backgroundColor={COLOR_FACEBOOK} >
           <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
         </FontAwesome.Button>

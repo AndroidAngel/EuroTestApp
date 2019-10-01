@@ -12,7 +12,7 @@ class SignupProfession extends BaseEurolandAppActivity {
       this.state = {
         defaultAnimationDialog: false,
         closingDialogAnimation: false,
-      activityName: 'SignupProfessionActivity',
+      activityName: 'SignupProfession',
       activityData: []
     };
     }
@@ -36,8 +36,9 @@ class SignupProfession extends BaseEurolandAppActivity {
       }
     
   render() {
-     this.setCurrentScreen('SignupProfession', 'SignupProfessionActivity');
-    this.logEvent('onLoadSignupProfession', {target: 'SignupProfessionActivity' });
+     this.setCurrentScreen('SignupProfession', 'SignupProfession');
+    this.logEvent('onLoadSignupProfession',  {target: 'SignupProfession'});
+  
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Tell us more about yourself.</Text>
