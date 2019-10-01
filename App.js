@@ -26,8 +26,8 @@ const RootStack = createStackNavigator(
     },
     Dashboard: {
       screen: Dashboard
-    }
-  },
+  }
+},
   {
     initialRouteName: 'SignupPlatform',
   }
@@ -35,6 +35,4 @@ const RootStack = createStackNavigator(
 
 
 const App = createAppContainer(RootStack);  
-
-
 export default App;

@@ -1,0 +1,10 @@
+export const COLOR_PINK = 'rgb(221, 97, 97)'
+export const COLOR_PINK_LIGHT = 'rgb(234, 195, 176)'
+export const COLOR_FACEBOOK = '#3b5998'
+export const COLOR_PINK_MEDIUM = 'rgb(255,119,34)'
+export const COLOR_LINKEDIN = '#0077B5'
+export const COLOR_GOOGLE = '#DB4437'
+export const COLOR_EMAIL = '#808080'
+export const COLOR_LIGHT = '#FFFAFA'
+export const COLOR_TEXT= '#696969'
+
