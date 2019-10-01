@@ -8,7 +8,9 @@ import firebase from 'react-native-firebase';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
-import { COLOR_TEXT, COLOR_FACEBOOK, COLOR_LIGHT, COLOR_LINKEDIN, COLOR_GOOGLE, COLOR_EMAIL } from '/Users/iamangelauditor/EuroTestApp/components/myColor.js';
+import { COLOR_TEXT, COLOR_FACEBOOK, COLOR_LIGHT, COLOR_LINKEDIN, COLOR_GOOGLE, COLOR_EMAIL } from '../components/myColor';
+
+
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
   },
   facebookButton: {
     width: 300,
-    height: 50,
+    height: 60,
     borderRadius: 6,
     justifyContent: 'center',
 
