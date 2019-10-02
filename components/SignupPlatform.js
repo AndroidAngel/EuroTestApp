@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Text, View, TextInput,
   TouchableOpacity, TouchableWithoutFeedback,
-  Keyboard, BackHandler } from 'react-native';
-import { Button } from 'react-native-paper';
+  Keyboard, BackHandler
+} from 'react-native';
 import firebase from 'react-native-firebase';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import { COLOR_TEXT, COLOR_FACEBOOK, COLOR_LIGHT, COLOR_LINKEDIN, COLOR_GOOGLE, COLOR_EMAIL } from '../components/myColor';
-
-
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
@@ -56,44 +54,48 @@ class SignupPlatform extends BaseEurolandAppActivity {
   }
 
   signupEmail() {
-   this.logEvent('signup', 
-   { 
-   method: 'email',
-   result: JSON.stringify('success')});
+    this.logEvent('signup',
+      {
+        method: 'email',
+        result: JSON.stringify('success')
+      });
     this.navigate('SignupInformation');
   }
   signupGoogle() {
-    this.logEvent('signup', 
-    { 
-      method: 'google',
-    result: JSON.stringify('success')});
+    this.logEvent('signup',
+      {
+        method: 'google',
+        result: JSON.stringify('success')
+      });
     this.navigate('SignupOpenAuthentication');
   }
 
   signupFacebook() {
-    this.logEvent('signup', 
-    { 
-      method: 'facebook',
-    result: JSON.stringify('success')});
+    this.logEvent('signup',
+      {
+        method: 'facebook',
+        result: JSON.stringify('success')
+      });
     this.navigate('SignupOpenAuthentication');
   }
   signupLinkedin() {
-    this.logEvent('signup', 
-    { 
-      method: 'linkedin',
-      result: JSON.stringify('success')});
+    this.logEvent('signup',
+      {
+        method: 'linkedin',
+        result: JSON.stringify('success')
+      });
     this.navigate('SignupOpenAuthentication');
   }
-  
+
   render() {
     this.setCurrentScreen('SignupPlatform', 'SignupPlatform');
-    this.logEvent('onLoadSignupPlatform', 
-    { 
-      target: 'SignupPlatform',
-       params1: JSON.stringify(['value1', 'value2', 'value3' ])
-      // JSON.stringify(['value1', 'value2', 'value3'])
-      // userData: 'value4,value5,value6'
-     });
+    this.logEvent('onLoadSignupPlatform',
+      {
+        target: 'SignupPlatform'
+        // params1: JSON.stringify(['value1', 'value2', 'value3'])
+        // JSON.stringify(['value1', 'value2', 'value3'])
+        // userData: 'value4,value5,value6'
+      });
 
 
     const Divider = (props) => {
@@ -111,10 +113,10 @@ class SignupPlatform extends BaseEurolandAppActivity {
         <Divider style={styles.divider}></Divider>
         <FontAwesome.Button
           style={styles.facebookButton}
-          name="email"
+          name="email address"
           onPress={this.signupEmail.bind(this)}
           backgroundColor={COLOR_EMAIL} >
-         <Text style={styles.loginButtonTitle}>Login with Email address</Text>
+          <Text style={styles.loginButtonTitle}>Login with Email</Text>
         </FontAwesome.Button>
 
 
@@ -145,21 +147,17 @@ class SignupPlatform extends BaseEurolandAppActivity {
           backgroundColor={COLOR_FACEBOOK} >
           <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
         </FontAwesome.Button>
-        {/* <Button mode="contained" color="green"
-          onPress={this.signupLinkedin.bind(this)} style={styles.facebookButton}>
-          LinkedIn </Button> */}
 
-
-        </View>
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-  flex: 1,
-  flexDirection: 'column',
-  justifyContent: 'center',
-  backgroundColor: COLOR_LIGHT,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: COLOR_LIGHT,
   },
   row: {
     flexDirection: 'row',
@@ -177,7 +175,7 @@ const styles = StyleSheet.create({
     color: COLOR_TEXT,
     textAlign: 'center',
     width: 400,
-    fontSize: 23,
+    fontSize: 27,
   },
   headerText: {
     fontSize: 36,
@@ -192,7 +190,7 @@ const styles = StyleSheet.create({
   facebookButton: {
     width: 300,
     height: 60,
-    borderRadius: 6,
+    borderRadius: 10,
     justifyContent: 'center',
 
   },

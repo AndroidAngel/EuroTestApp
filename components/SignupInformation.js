@@ -3,8 +3,6 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
-
-
 class SignupInformation extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
@@ -14,14 +12,22 @@ class SignupInformation extends BaseEurolandAppActivity {
     };
     }
     signupInformationNext(){
-      this.logEvent('signup_information', {result: 'success'});
+      this.logEvent('signup_information', 
+      {
+        result: 'success'
+      });
       this.navigate('SignupProfession');
     }
+    // signupSkipped(){
+    //   this.logEvent('signup_information' ,
+    //   {
+    //     result: 'success',
+    //     result: 'skipped'});
+    //   this.navigate('Dashboard');
+    // }
 
-    signupSkipped(){
-      this.logEvent('signup_information' ,{result: 'skipped'});
-      this.navigate('Dashboard');
-    }
+    // params1: JSON.stringify(['value1', 'value2', 'value3'])
+        // JSON.stringify(['value1', 'value2', 'value3'])
   
   render() {
   this.setCurrentScreen('SignupInformation', 'SignupInformation');
@@ -41,20 +47,9 @@ class SignupInformation extends BaseEurolandAppActivity {
           onPress={this.signupInformationNext.bind(this)} style={styles.button}>
            Next </Button> 
 
-           <Button color="blue"
+           {/* <Button color="blue"
           onPress={this.signupSkipped.bind(this)} style={styles.button}>
-           Skipped </Button> 
-
-           <View style={styles.textInputContainer}>
-              <TextInput
-                style={styles.textInput}
-                textContentType='emailAddress'
-                keyboardType='email-address'
-                placeholder="Enter your email"
-              >
-              </TextInput>
-            </View>
-
+           Skipped </Button>  */}
 
       </View>
     );

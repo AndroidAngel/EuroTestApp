@@ -27,7 +27,7 @@ class Dashboard extends BaseEurolandAppActivity {
     
           <Button mode="contained" color="green"
           onPress={this.gotoSignupPlatform.bind(this)} style={styles.button}>
-          Signup </Button>
+          go to Signup page</Button>
 
       </View>
     );

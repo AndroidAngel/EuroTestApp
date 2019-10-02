@@ -5,7 +5,6 @@ import { Button } from 'react-native-paper';
 
 import BaseEurolandAppActivity from './BaseEurolandAppActivity.js';
 
-
 class SignupProfession extends BaseEurolandAppActivity {
     constructor(props) {
       super(props);
@@ -47,19 +46,19 @@ class SignupProfession extends BaseEurolandAppActivity {
         <Text style={styles.infoText}>Company (optional)</Text>
         <Text style={styles.infoText}>Profession (optional)</Text>
         
-          <Button mode="contained" color="blue"
+          <Button mode="contained" color="green"
             onPress={() => {this.setState({defaultAnimationDialog: true,});}} style={styles.button}>
           Done</Button>
           
           
-          <Button mode="contained" color="red"
+          <Button   color="blue"
            onPress={() => {this.setState({defaultAnimationDialog: true,});}} style={styles.button}>
           Skip for now</Button>
 
 
-          <Button mode="contained" color="red"
-          onPress={this.signupQuitProcess.bind(this)} style={styles.button}>
-           Quit </Button> 
+          {/* <Button mode="contained" color="red"
+          onPress={this.signupProfessionSkipped.bind(this)} style={styles.button}>
+           Skip </Button>  */}
 
            <Dialog
           onDismiss={() => {
@@ -85,7 +84,7 @@ class SignupProfession extends BaseEurolandAppActivity {
                 text="Go to Dashboard"
                 color="green"
                 bordered
-                onPress={this.signupSuccess.bind(this)}
+                onPress={this.signupSuccessDialog.bind(this)}
                 key="buttonsucess" />
             </DialogFooter>} >
         </Dialog>
